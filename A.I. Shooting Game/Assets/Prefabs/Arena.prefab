@@ -1357,7 +1357,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 84
+  m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!114 &1170642682764793571
 MonoBehaviour:
@@ -1377,7 +1377,7 @@ MonoBehaviour:
     VectorActionSize: 04000000
     VectorActionDescriptions: []
     VectorActionSpaceType: 1
-  m_Model: {fileID: 5022602860645237092, guid: c2bf0959c7c9e435d95b81879c3c20e8, type: 3}
+  m_Model: {fileID: 5022602860645237092, guid: 2f6b7467f16f3b447aba47b6357edb06, type: 3}
   m_InferenceDevice: 0
   m_BehaviorType: 0
   m_BehaviorName: Shooter
