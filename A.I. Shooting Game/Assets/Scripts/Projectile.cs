@@ -25,4 +25,9 @@ public class Projectile : MonoBehaviour
     {
         Invoke(nameof(SelfDestruct), 1f);
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        Destroy(this.gameObject);
+    }
 }

@@ -79,7 +79,7 @@ public class ShootingAgent : Agent
             Shoot();
         }
 
-        Rb.velocity = new Vector3(vectorAction[1] * speed, 0f, vectorAction[2] * speed);
+        Rb.velocity = new Vector3(vectorAction[2] * speed, 0f, vectorAction[1] * speed);
         transform.Rotate(Vector3.up, vectorAction[3] * rotationSpeed);
     }
     
@@ -96,9 +96,9 @@ public class ShootingAgent : Agent
     public override void Heuristic(float[] actionsOut)
     {
         actionsOut[0] = Input.GetKey(KeyCode.P) ? 1f : 0f;
-        actionsOut[2] = Input.GetAxis("Horizontal");
-        //actionsOut[1] = -Input.GetAxis("Vertical");
-        actionsOut[3] = Input.GetAxis("Vertical");
+        actionsOut[1] = Input.GetAxis("Horizontal");
+        actionsOut[2] = -Input.GetAxis("Vertical");
+        actionsOut[3] = Input.GetAxis("Rotate");
     }
 
     public override void OnEpisodeBegin()
