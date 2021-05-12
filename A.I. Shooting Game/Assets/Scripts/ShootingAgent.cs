@@ -11,10 +11,17 @@ public class ShootingAgent : Agent
     public int score = 0;
     public float speed = 3f;
     public float rotationSpeed = 3f;
+    public float jumpforce=3f;
+    public bool jumping = false;
     
     public Transform shootingPoint;
     public int minStepsBetweenShots = 50;
     public int damage = 100;
+    public int original_bullets_count;
+    public int bullets_count=5;
+    public bool reloading=false;
+    public float reload_steps;
+    public int steps_reloading;
 
     public Projectile projectile;
     public EnemyManager enemyManager;
@@ -30,7 +37,7 @@ public class ShootingAgent : Agent
     
     private void Shoot()
     {
-        if (!ShotAvaliable)
+        if (!ShotAvaliable&&reloading)
             return;
         
         var layerMask = 1 << LayerMask.NameToLayer("Enemy");
@@ -50,14 +57,28 @@ public class ShootingAgent : Agent
             AddReward(-0.033f);
         }
 
+        if (transform.localPosition.y <= -3) {
+            enemyManager.SetEnemiesActive();
+            AddReward(-1f);
+            EndEpisode();
+        }
+
+        bullets_count--;
+
+        if (bullets_count <= 0) {
+            reloading = true;
+        }
+
         ShotAvaliable = false;
         StepsUntilShotIsAvaliable = minStepsBetweenShots;
+        steps_reloading = 0;
     }
 
     public override void CollectObservations(VectorSensor sensor)
     {
         sensor.AddObservation(ShotAvaliable);
-        //Add Angle Y
+        sensor.AddObservation(transform.rotation.y);
+        sensor.AddObservation(bullets_count);
     }
 
     private void FixedUpdate()
@@ -66,8 +87,17 @@ public class ShootingAgent : Agent
         {
             StepsUntilShotIsAvaliable--;
 
-            if (StepsUntilShotIsAvaliable <= 0)
+            if (StepsUntilShotIsAvaliable <= 0) {
                 ShotAvaliable = true;
+            }
+
+            steps_reloading++;
+            if (steps_reloading == reload_steps) {
+                steps_reloading = 0;
+                reloading = false;
+                bullets_count = original_bullets_count;
+            }
+
         }
         
         AddReward(-1f/MaxStep);
@@ -79,15 +109,28 @@ public class ShootingAgent : Agent
             Shoot();
         }
 
-        Rb.velocity = new Vector3(vectorAction[2] * speed, 0f, vectorAction[1] * speed);
+        if (jumping) {
+            vectorAction[4] = 0;
+            Rb.AddForce(new Vector3(0, -3.8f, 0), ForceMode.VelocityChange);
+        }
+
+        Rb.velocity = new Vector3(vectorAction[2] * speed, 0, vectorAction[1] * speed);
         transform.Rotate(Vector3.up, vectorAction[3] * rotationSpeed);
+
+
+        if (vectorAction[4] == 1)
+        {
+            print("jump");
+            jumping = true;
+            Rb.AddForce(new Vector3(0, jumpforce, 0),ForceMode.VelocityChange);
+        }
     }
     
     public override void Initialize()
     {
         StartingPosition = transform.position;
         Rb = GetComponent<Rigidbody>();
-        
+        bullets_count = original_bullets_count;
         //TODO: Delete
         Rb.freezeRotation = true;
         EnvironmentParameters = Academy.Instance.EnvironmentParameters;
@@ -95,10 +138,11 @@ public class ShootingAgent : Agent
     
     public override void Heuristic(float[] actionsOut)
     {
-        actionsOut[0] = Input.GetKey(KeyCode.P) ? 1f : 0f;
+        actionsOut[0] = Input.GetMouseButtonDown(0) ? 1f : 0f;
         actionsOut[1] = Input.GetAxis("Horizontal");
         actionsOut[2] = -Input.GetAxis("Vertical");
         actionsOut[3] = Input.GetAxis("Rotate");
+        actionsOut[4] = Input.GetKeyDown(KeyCode.Space) ? 1f : 0f;
     }
 
     public override void OnEpisodeBegin()
@@ -107,7 +151,7 @@ public class ShootingAgent : Agent
 
         //Load Parameter from Curciulum
         minStepsBetweenShots = Mathf.FloorToInt(EnvironmentParameters.GetWithDefault("shootingFrequenzy", 30f));
-        
+        bullets_count = original_bullets_count;
         transform.position = StartingPosition;
         Rb.velocity = Vector3.zero;
         ShotAvaliable = true;
@@ -127,5 +171,15 @@ public class ShootingAgent : Agent
             AddReward(-1f);
             EndEpisode();
         }
+    }
+
+    private void OnCollisionStay(Collision collision)
+    {
+        jumping = false;
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        jumping = true;
     }
 }
