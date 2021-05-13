@@ -12,44 +12,44 @@ public class ShootingAgent : Agent
     public int score = 0;
     public float speed = 3f;
     public float rotationSpeed = 3f;
-    public float jumpforce=3f;
+    public float jumpforce = 3f;
     public bool jumping = false;
     public Text recompensa_text;
-    
+
     public Transform shootingPoint;
     public int minStepsBetweenShots = 50;
     public int damage = 100;
     public int original_bullets_count;
-    public int bullets_count=5;
-    public bool reloading=false;
+    public int bullets_count = 5;
+    public bool reloading = false;
     public float reload_steps;
     public int steps_reloading;
 
     public Projectile projectile;
     public EnemyManager enemyManager;
-    
+
     private bool ShotAvaliable = true;
     private int StepsUntilShotIsAvaliable = 0;
-    
+
     private Vector3 StartingPosition;
     private Rigidbody Rb;
     private EnvironmentParameters EnvironmentParameters;
 
     public event Action OnEnvironmentReset;
-    
+
     private void Shoot()
     {
-        if (!ShotAvaliable&&reloading)
+        if (!ShotAvaliable && reloading)
             return;
-        
+
         var layerMask = 1 << LayerMask.NameToLayer("Enemy");
         var direction = transform.forward;
 
         var spawnedProjectile = Instantiate(projectile, shootingPoint.position, Quaternion.Euler(0f, -90f, 0f));
         spawnedProjectile.SetDirection(direction);
-        
+
         Debug.DrawRay(transform.position, direction, Color.blue, 1f);
-        
+
         if (Physics.Raycast(shootingPoint.position, direction, out var hit, 200f, layerMask))
         {
             hit.transform.GetComponent<Enemy>().GetShot(damage, this);
@@ -82,12 +82,13 @@ public class ShootingAgent : Agent
     {
 
         AddReward(-1f / MaxStep);
-        recompensa_text.text =GetCumulativeReward().ToString();
+        recompensa_text.text = GetCumulativeReward().ToString();
         if (!ShotAvaliable)
         {
             StepsUntilShotIsAvaliable--;
 
-            if (StepsUntilShotIsAvaliable <= 0) {
+            if (StepsUntilShotIsAvaliable <= 0)
+            {
                 ShotAvaliable = true;
             }
         }
@@ -103,14 +104,29 @@ public class ShootingAgent : Agent
             bullets_count = original_bullets_count;
         }
 
-        if (Input.GetKeyDown(KeyCode.Space) && !jumping) {
+        if (jumping)
+        {
+            Rb.AddForce(new Vector3(0, -4.5f, 0), ForceMode.VelocityChange);
+        }
+
+        if (transform.localPosition.y <= -3)
+        {
+            enemyManager.SetEnemiesActive();
+            AddReward(-1f);
+            EndEpisode();
+        }
+        if (transform.localPosition.y > 9)
+        {
+            print("jump too far");
+            enemyManager.SetEnemiesActive();
+            AddReward(-1f);
+            EndEpisode();
+        }
+
+        /*if (Input.GetKeyDown(KeyCode.Space) && !jumping) {
             //print("jump");
             jumping = true;
             Rb.AddForce(new Vector3(0, jumpforce, 0), ForceMode.VelocityChange);
-        }
-
-        if (jumping) {
-            Rb.AddForce(new Vector3(0, -5, 0), ForceMode.VelocityChange);
         }
 
         if (Input.GetKeyDown(KeyCode.P))
@@ -120,37 +136,24 @@ public class ShootingAgent : Agent
 
         if (Input.GetKeyDown(KeyCode.R)) {
             reloading = true;
-        }
-
-        if (transform.localPosition.y <= -3)
-        {
-            enemyManager.SetEnemiesActive();
-            AddReward(-1f);
-            EndEpisode();
-        }
-        if (transform.localPosition.y > 5)
-        {
-            enemyManager.SetEnemiesActive();
-            AddReward(-1f);
-            EndEpisode();
-        }
+        }*/
 
     }
     public override void OnActionReceived(float[] vectorAction)
     {
-        if (vectorAction[4]==1 && !jumping)
+        if (Mathf.RoundToInt(vectorAction[4]) >= 1 && !jumping)
         {
             //print("jump");
             jumping = true;
             Rb.AddForce(new Vector3(0, jumpforce, 0), ForceMode.VelocityChange);
         }
 
-        if (vectorAction[0] == 1)
+        if (Mathf.RoundToInt(vectorAction[0]) >= 1)
         {
             Shoot();
         }
 
-        if (vectorAction[5] == 1)
+        if (Mathf.RoundToInt(vectorAction[5]) >= 1)
         {
             reloading = true;
         }
@@ -159,7 +162,7 @@ public class ShootingAgent : Agent
         Rb.velocity = new Vector3(vectorAction[2] * speed, 0, vectorAction[1] * speed);
         transform.Rotate(Vector3.up, vectorAction[3] * rotationSpeed);
     }
-    
+
     public override void Initialize()
     {
         StartingPosition = transform.position;
@@ -169,7 +172,7 @@ public class ShootingAgent : Agent
         Rb.freezeRotation = true;
         EnvironmentParameters = Academy.Instance.EnvironmentParameters;
     }
-    
+
     public override void Heuristic(float[] actionsOut)
     {
         actionsOut[0] = Input.GetKeyDown(KeyCode.P) ? 1f : 0f;
