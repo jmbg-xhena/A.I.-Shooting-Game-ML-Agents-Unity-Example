@@ -80,6 +80,8 @@ public class ShootingAgent : Agent
 
     private void FixedUpdate()
     {
+
+        AddReward(-1f / MaxStep);
         recompensa_text.text =GetCumulativeReward().ToString();
         if (!ShotAvaliable)
         {
@@ -111,8 +113,6 @@ public class ShootingAgent : Agent
             Rb.AddForce(new Vector3(0, -5, 0), ForceMode.VelocityChange);
         }
 
-        AddReward(-1f / MaxStep);
-
         if (Input.GetKeyDown(KeyCode.P))
         {
             Shoot();
@@ -138,6 +138,24 @@ public class ShootingAgent : Agent
     }
     public override void OnActionReceived(float[] vectorAction)
     {
+        if (vectorAction[4]==1 && !jumping)
+        {
+            //print("jump");
+            jumping = true;
+            Rb.AddForce(new Vector3(0, jumpforce, 0), ForceMode.VelocityChange);
+        }
+
+        if (vectorAction[0] == 1)
+        {
+            Shoot();
+        }
+
+        if (vectorAction[5] == 1)
+        {
+            reloading = true;
+        }
+
+
         Rb.velocity = new Vector3(vectorAction[2] * speed, 0, vectorAction[1] * speed);
         transform.Rotate(Vector3.up, vectorAction[3] * rotationSpeed);
     }
