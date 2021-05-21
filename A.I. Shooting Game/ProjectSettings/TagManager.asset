@@ -28,6 +28,7 @@ TagManager:
   - badFood
   - food
   - enemy
+  - mun
   layers:
   - Default
   - TransparentFX
@@ -41,7 +42,7 @@ TagManager:
   - Agent
   - Enemy
   - Projectile
-  - 
+  - pared
   - 
   - 
   - 
