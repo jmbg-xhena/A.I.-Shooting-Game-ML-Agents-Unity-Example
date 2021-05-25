@@ -18,7 +18,7 @@ public class EnemyManager : MonoBehaviour
     private void Start()
     {
         EnvironmentParameters = Academy.Instance.EnvironmentParameters;
-        EnemyCount = Mathf.FloorToInt(EnvironmentParameters.GetWithDefault("amountZombies", 5f));
+        EnemyCount = Mathf.FloorToInt(EnvironmentParameters.GetWithDefault("amountZombies", 8f));
         
         SetEnemiesActive();
     }
@@ -48,7 +48,7 @@ public class EnemyManager : MonoBehaviour
     public void SetEnemiesActive()
     {
         int counter = 0;
-        EnemyCount = Mathf.FloorToInt(EnvironmentParameters.GetWithDefault("amountZombies",  5f));
+        EnemyCount = Mathf.FloorToInt(EnvironmentParameters.GetWithDefault("amountZombies",  8f));
 
         startingPoint = Mathf.FloorToInt(Random.Range(0f, enemies.Length - EnemyCount));
 
@@ -60,7 +60,7 @@ public class EnemyManager : MonoBehaviour
         for (int i = startingPoint; i < EnemyCount + startingPoint; i++)
         {
             counter++;
-            enemies[i].gameObject.SetActive(true);
+            //enemies[i].gameObject.SetActive(true);
         }
     }
 }

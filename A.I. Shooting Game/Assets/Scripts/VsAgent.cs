@@ -7,8 +7,7 @@ using Unity.MLAgents.Sensors;
 using UnityEngine;
 using UnityEngine.UI;
 
-
-public class ShootingAgent : Agent
+public class VsAgent : Agent
 {
     public int score = 0;
     public float speed = 3f;
@@ -17,7 +16,7 @@ public class ShootingAgent : Agent
     public float jumpforce = 3f;
     public int jumps = 0;
     public bool jumping = false;
-    //public Text recompensa_text;
+    public Text recompensa_text;
     public Text score_text;
 
     public Transform shootingPoint;
@@ -33,7 +32,6 @@ public class ShootingAgent : Agent
     public bool empty_mun = false;
 
     public Projectile projectile;
-    public EnemyManager enemyManager;
 
     private bool ShotAvaliable = true;
     private int StepsUntilShotIsAvaliable = 0;
@@ -45,7 +43,7 @@ public class ShootingAgent : Agent
     public event Action OnEnvironmentReset;
 
     //public GameObject mun;
-    public GameObject recargador;
+    public GameObject[] recargador;
     public GameObject oponent;
     public float multip = 1;
 
@@ -54,10 +52,10 @@ public class ShootingAgent : Agent
         if (!ShotAvaliable || reloading || empty_mun)
             return;
 
-        var layerMask = 1 << LayerMask.NameToLayer("Enemy");
+        var layerMask = 1 << LayerMask.NameToLayer("Agent");
         var direction = transform.forward;
 
-        var spawnedProjectile = Instantiate(projectile, shootingPoint.position, Quaternion.Euler(0f, -90f, 0f));
+        var spawnedProjectile = Instantiate(projectile,shootingPoint.position, Quaternion.Euler(0f, -90f, 0f));
         spawnedProjectile.SetDirection(direction);
 
         bullets_count--;
@@ -67,16 +65,15 @@ public class ShootingAgent : Agent
 
         if (Physics.Raycast(shootingPoint.position, direction, out var hit, 100f))
         {
-            if (hit.transform.CompareTag("enemy")) {
-                //hit.transform.GetComponent<Enemy>().GetShot(damage, this);
-                hit.transform.GetComponent<VsAgent>().SetReward(-50);
+            if (hit.transform.CompareTag("agent"))
+            {
+                AddReward(400f*multip);
                 score++;
                 multip += 0.1f;
-                hit.transform.GetComponent<VsAgent>().EndEpisode(); 
+                hit.rigidbody.gameObject.GetComponent<ShootingAgent>().die();
                 EndEpisode();
-                AddReward(400f);
             }
-            else 
+            else
             {
                 AddReward(-20f);
             }
@@ -95,14 +92,14 @@ public class ShootingAgent : Agent
         sensor.AddObservation(this.transform.rotation.y);
         sensor.AddObservation(this.bullets_count);
         sensor.AddObservation(this.mun_count);
-        sensor.AddObservation(Vector3.Distance(this.transform.localPosition, oponent.transform.localPosition));
+        //sensor.AddObservation(Vector3.Distance(this.transform.localPosition,oponent.transform.localPosition));
         //sensor.AddObservation(Vector3.Distance(this.transform.localPosition,this.mun.transform.localPosition));
-        //sensor.AddObservation(Vector3.Distance(this.transform.localPosition,this.recargador.transform.localPosition));
+        //sensor.AddObservation(Vector3.Distance(this.transform.localPosition, this.recargador.transform.localPosition));
     }
 
     private void FixedUpdate()
     {
-        if (Vector3.Distance(this.transform.localPosition, this.oponent.transform.localPosition) < 9f && Vector3.Distance(this.transform.localPosition, this.oponent.transform.localPosition) > 4f)
+        if (Vector3.Distance(this.transform.localPosition, this.oponent.transform.localPosition) <= 9f && Vector3.Distance(this.transform.localPosition, this.oponent.transform.localPosition) > 4f)
         {
             AddReward(0.03f);
         }
@@ -117,20 +114,22 @@ public class ShootingAgent : Agent
             AddReward(-0.02f);
         }
 
+
         if (Physics.Raycast(shootingPoint.position, transform.forward, out var hit, 50f))
         {
 
-            if (hit.transform.CompareTag("enemy"))
+            if (hit.transform.CompareTag("agent"))
             {
                 //Debug.DrawRay(shootingPoint.position, transform.forward * 5, Color.green,0.3f);
                 AddReward(40f / MaxStep);
                 rotationSpeed = 0;
             }
-            else {
+            else
+            {
                 rotationSpeed = initRotationSpeed;
                 if (Physics.Raycast(shootingPoint.position, transform.forward + (Vector3.left / 8), out var hit1, 50f))
                 {
-                    if (hit1.transform.CompareTag("enemy"))
+                    if (hit1.transform.CompareTag("agent"))
                     {
                         //Debug.DrawRay(shootingPoint.position, (transform.forward + (Vector3.left / 8)) * 5, Color.blue,0.3f);
                         AddReward(10f / MaxStep);
@@ -140,7 +139,7 @@ public class ShootingAgent : Agent
                         if (Physics.Raycast(shootingPoint.position, transform.forward + (Vector3.right / 8), out var hit2, 50f))
                         {
 
-                            if (hit2.transform.CompareTag("enemy"))
+                            if (hit2.transform.CompareTag("agent"))
                             {
                                 //Debug.DrawRay(shootingPoint.position, (transform.forward + (Vector3.right / 8)) * 5, Color.red,0.3f);
                                 AddReward(10f / MaxStep);
@@ -151,19 +150,20 @@ public class ShootingAgent : Agent
             }
         }
 
-        AddReward(-600f / MaxStep); 
+        AddReward(-600f / MaxStep);
 
         if (mun_count <= 0)
         {
-            if (reloading) {
+            if (reloading)
+            {
                 reloading = false;
             }
             empty_mun = true;
             //AddReward(-0.001f);
         }
 
-        //recompensa_text.text = GetCumulativeReward().ToString();
-        score_text.text = score.ToString(); 
+        recompensa_text.text = GetCumulativeReward().ToString();
+        score_text.text = score.ToString();
         if (!ShotAvaliable && !empty_mun)
         {
             StepsUntilShotIsAvaliable--;
@@ -193,15 +193,13 @@ public class ShootingAgent : Agent
 
         if (transform.localPosition.y <= -3)
         {
-            enemyManager.SetEnemiesActive();
             AddReward(-1f);
             EndEpisode();
         }
         if (transform.localPosition.y > 5)
-        { 
-            //print("muy alto");
-            enemyManager.SetEnemiesActive();
-            AddReward(-3f);
+        {
+            print("muy alto");
+            AddReward(-300f);
             EndEpisode();
         }
 
@@ -224,7 +222,7 @@ public class ShootingAgent : Agent
     }
     public override void OnActionReceived(float[] vectorAction)
     {
-        if (Mathf.RoundToInt(vectorAction[4]) >= 1 && !jumping && jumps<1)
+        if (Mathf.RoundToInt(vectorAction[4]) >= 1 && !jumping && jumps < 1)
         {
             //print("jump");
             jumps++;
@@ -275,47 +273,41 @@ public class ShootingAgent : Agent
     {
         OnEnvironmentReset?.Invoke();
         //Load Parameter from Curciulum
-        minStepsBetweenShots = Mathf.FloorToInt(EnvironmentParameters.GetWithDefault("shootingFrequenzy", 30f)); 
+        minStepsBetweenShots = Mathf.FloorToInt(EnvironmentParameters.GetWithDefault("shootingFrequenzy", 30f));
         bullets_count = original_bullets_count;
         mun_count = original_mun_count;
         empty_mun = false;
         steps_reloading = 0;
-        transform.localPosition = new Vector3(UnityEngine.Random.Range(-8f, 0f), 1.2f, UnityEngine.Random.Range(-8f, 8f));
+        transform.localPosition = new Vector3(UnityEngine.Random.Range(0f,8f),1.2f, UnityEngine.Random.Range(-8f, 8f));
         transform.rotation = Quaternion.Euler(Vector3.zero);
         Rb.velocity = Vector3.zero;
         ShotAvaliable = true;
         //mun.transform.localPosition = new Vector3(UnityEngine.Random.Range(-6f, 6f), 1, UnityEngine.Random.Range(-6f, 6f));
         rotationSpeed = initRotationSpeed;
-    }
-
-    public void RegisterKill()
-    {
-        score++;
-        AddReward(160.0f / EnvironmentParameters.GetWithDefault("amountZombies", 8f));
-        print("kill");
-    }
-
-    public void die() {
-        enemyManager.SetEnemiesActive();
-        AddReward(-50f);
-        EndEpisode(); 
+        for (int i = 0; i < recargador.Length; i++)
+        {
+            recargador[i].SetActive(true);
+        } 
     }
 
     private void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.CompareTag("enemy"))
+        if (other.gameObject.CompareTag("agent"))
         {
-            die();
+            AddReward(-200f);
+            EndEpisode();
         }
-        if (other.gameObject.CompareTag("mun")) {
+        if (other.gameObject.CompareTag("mun"))
+        {
             print("municion");
             //AddReward(100f);
-            if (bullets_count <= 0) {
+            if (bullets_count <= 0)
+            {
                 reloading = true;
             }
-            empty_mun = false; 
+            empty_mun = false;
             mun_count++;
-            other.gameObject.transform.localPosition = new Vector3(UnityEngine.Random.Range(-6f,6f), 1, UnityEngine.Random.Range(-6f, 6f));
+            other.gameObject.transform.localPosition = new Vector3(UnityEngine.Random.Range(-6f, 6f), 1, UnityEngine.Random.Range(-6f, 6f));
         }
     }
 
