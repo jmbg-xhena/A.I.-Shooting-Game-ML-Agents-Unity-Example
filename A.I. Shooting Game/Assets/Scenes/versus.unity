@@ -227,7 +227,8 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Model
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 5022602860645237092, guid: 42e517de122ad9d48880d7fd7b2b4907,
+        type: 3}
     - target: {fileID: 8732843575744590190, guid: 308117823078f4e49bc763ef5bb6dfd2,
         type: 3}
       propertyPath: m_BehaviorType
@@ -364,7 +365,8 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Model
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 5022602860645237092, guid: 42e517de122ad9d48880d7fd7b2b4907,
+        type: 3}
     - target: {fileID: 8732843575744590190, guid: 308117823078f4e49bc763ef5bb6dfd2,
         type: 3}
       propertyPath: m_BehaviorType
@@ -501,7 +503,8 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Model
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 5022602860645237092, guid: 42e517de122ad9d48880d7fd7b2b4907,
+        type: 3}
     - target: {fileID: 8732843575744590190, guid: 308117823078f4e49bc763ef5bb6dfd2,
         type: 3}
       propertyPath: m_BehaviorType
@@ -643,7 +646,8 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Model
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 5022602860645237092, guid: 42e517de122ad9d48880d7fd7b2b4907,
+        type: 3}
     - target: {fileID: 8732843575744590190, guid: 308117823078f4e49bc763ef5bb6dfd2,
         type: 3}
       propertyPath: m_BehaviorType
@@ -872,7 +876,8 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Model
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 5022602860645237092, guid: 42e517de122ad9d48880d7fd7b2b4907,
+        type: 3}
     - target: {fileID: 8732843575744590190, guid: 308117823078f4e49bc763ef5bb6dfd2,
         type: 3}
       propertyPath: m_BehaviorType
@@ -1009,7 +1014,8 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Model
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 5022602860645237092, guid: 42e517de122ad9d48880d7fd7b2b4907,
+        type: 3}
     - target: {fileID: 8732843575744590190, guid: 308117823078f4e49bc763ef5bb6dfd2,
         type: 3}
       propertyPath: m_BehaviorType
@@ -1146,7 +1152,8 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Model
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 5022602860645237092, guid: 42e517de122ad9d48880d7fd7b2b4907,
+        type: 3}
     - target: {fileID: 8732843575744590190, guid: 308117823078f4e49bc763ef5bb6dfd2,
         type: 3}
       propertyPath: m_BehaviorType
@@ -1327,7 +1334,8 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Model
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 5022602860645237092, guid: 42e517de122ad9d48880d7fd7b2b4907,
+        type: 3}
     - target: {fileID: 8732843575744590190, guid: 308117823078f4e49bc763ef5bb6dfd2,
         type: 3}
       propertyPath: m_BehaviorType
@@ -1452,7 +1460,8 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Model
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 5022602860645237092, guid: 42e517de122ad9d48880d7fd7b2b4907,
+        type: 3}
     - target: {fileID: 8732843575744590190, guid: 308117823078f4e49bc763ef5bb6dfd2,
         type: 3}
       propertyPath: m_BehaviorType
@@ -1589,7 +1598,8 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Model
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 5022602860645237092, guid: 42e517de122ad9d48880d7fd7b2b4907,
+        type: 3}
     - target: {fileID: 8732843575744590190, guid: 308117823078f4e49bc763ef5bb6dfd2,
         type: 3}
       propertyPath: m_BehaviorType
@@ -1797,7 +1807,8 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Model
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 5022602860645237092, guid: 42e517de122ad9d48880d7fd7b2b4907,
+        type: 3}
     - target: {fileID: 8732843575744590190, guid: 308117823078f4e49bc763ef5bb6dfd2,
         type: 3}
       propertyPath: m_BehaviorType
@@ -1934,7 +1945,8 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Model
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 5022602860645237092, guid: 42e517de122ad9d48880d7fd7b2b4907,
+        type: 3}
     - target: {fileID: 8732843575744590190, guid: 308117823078f4e49bc763ef5bb6dfd2,
         type: 3}
       propertyPath: m_BehaviorType
@@ -2071,7 +2083,8 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Model
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 5022602860645237092, guid: 42e517de122ad9d48880d7fd7b2b4907,
+        type: 3}
     - target: {fileID: 8732843575744590190, guid: 308117823078f4e49bc763ef5bb6dfd2,
         type: 3}
       propertyPath: m_BehaviorType
@@ -2300,7 +2313,8 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Model
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 5022602860645237092, guid: 42e517de122ad9d48880d7fd7b2b4907,
+        type: 3}
     - target: {fileID: 8732843575744590190, guid: 308117823078f4e49bc763ef5bb6dfd2,
         type: 3}
       propertyPath: m_BehaviorType
@@ -2437,7 +2451,8 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Model
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 5022602860645237092, guid: 42e517de122ad9d48880d7fd7b2b4907,
+        type: 3}
     - target: {fileID: 8732843575744590190, guid: 308117823078f4e49bc763ef5bb6dfd2,
         type: 3}
       propertyPath: m_BehaviorType
@@ -2586,7 +2601,8 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Model
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 5022602860645237092, guid: 42e517de122ad9d48880d7fd7b2b4907,
+        type: 3}
     - target: {fileID: 8732843575744590190, guid: 308117823078f4e49bc763ef5bb6dfd2,
         type: 3}
       propertyPath: m_BehaviorType

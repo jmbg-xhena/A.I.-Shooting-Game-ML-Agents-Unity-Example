@@ -115,7 +115,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 80
-  m_CollisionDetection: 0
+  m_CollisionDetection: 3
 --- !u!114 &3367997000916353971
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -161,8 +161,10 @@ MonoBehaviour:
   rotationSpeed: 6
   initRotationSpeed: 0
   jumpforce: 100
+  original_jumpforce: 0
   jumps: 0
   jumping: 0
+  score_text: {fileID: 0}
   shootingPoint: {fileID: 3367997001789304833}
   minStepsBetweenShots: 500
   damage: 100
@@ -178,6 +180,8 @@ MonoBehaviour:
     type: 3}
   enemyManager: {fileID: 0}
   recargador: {fileID: 0}
+  oponent: {fileID: 0}
+  multip: 1
 --- !u!114 &3367997000916353970
 MonoBehaviour:
   m_ObjectHideFlags: 0
