@@ -211,7 +211,7 @@ public class ShootingAgent : Agent
             AddReward(-100f); 
             EndEpisode(); 
         }
-        if (transform.localPosition.y > 7)
+        if (transform.localPosition.y > 12)
         { 
             print("muy alto2");
             enemyManager.SetEnemiesActive();
@@ -334,6 +334,10 @@ public class ShootingAgent : Agent
             empty_mun = false; 
             mun_count++;
             other.gameObject.transform.localPosition = new Vector3(UnityEngine.Random.Range(-6f,6f), 1, UnityEngine.Random.Range(-6f, 6f));
+        }
+        if (other.gameObject.CompareTag("wall"))
+        {
+            Rb.AddForce(new Vector3(0, -9.8f, 0), ForceMode.VelocityChange);
         }
     }
 
