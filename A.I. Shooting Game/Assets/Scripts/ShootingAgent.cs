@@ -15,6 +15,7 @@ public class ShootingAgent : Agent
     public float rotationSpeed = 3f;
     public float initRotationSpeed;
     public float jumpforce = 3f;
+    public float original_jumpforce;
     public int jumps = 0;
     public bool jumping = false;
     //public Text recompensa_text;
@@ -71,14 +72,16 @@ public class ShootingAgent : Agent
                 //hit.transform.GetComponent<Enemy>().GetShot(damage, this);
                 hit.transform.GetComponent<VsAgent>().SetReward(-50);
                 score++;
-                multip += 0.1f;
+                score_text.text = score.ToString();
+                //multip += 0.1f;
                 hit.transform.GetComponent<VsAgent>().EndEpisode(); 
                 EndEpisode();
-                AddReward(400f);
+                AddReward(200f);
+                print("die");
             }
             else 
             {
-                AddReward(-20f);
+                AddReward(-10f);
             }
         }
         if (bullets_count <= 0 && mun_count > 0)
@@ -102,48 +105,60 @@ public class ShootingAgent : Agent
 
     private void FixedUpdate()
     {
-        if (Vector3.Distance(this.transform.localPosition, this.oponent.transform.localPosition) < 9f && Vector3.Distance(this.transform.localPosition, this.oponent.transform.localPosition) > 4f)
+        if (Rb.velocity.x >= 3 || Rb.velocity.x <= -3 || Rb.velocity.z >= 3 || Rb.velocity.z <= -3)
         {
-            AddReward(0.03f);
+            AddReward(0.2f);
+        }
+        else
+        {
+            AddReward(-0.1f);
+        }
+
+        if (Vector3.Distance(this.transform.localPosition, this.oponent.transform.localPosition) <= 9f && Vector3.Distance(this.transform.localPosition, this.oponent.transform.localPosition) > 4f)
+        {
+            AddReward(0.2f);
         }
 
         if (Vector3.Distance(this.transform.localPosition, this.oponent.transform.localPosition) < 4f)
         {
-            AddReward(0.06f);
+            AddReward(0.3f);
         }
 
         if (Vector3.Distance(this.transform.localPosition, this.oponent.transform.localPosition) > 9f)
         {
-            AddReward(-0.02f);
+            AddReward(-0.1f);
         }
 
-        if (Physics.Raycast(shootingPoint.position, transform.forward, out var hit, 50f))
+        if (Physics.Raycast(shootingPoint.position, transform.forward, out var hit, 8f))
         {
 
             if (hit.transform.CompareTag("enemy"))
             {
                 //Debug.DrawRay(shootingPoint.position, transform.forward * 5, Color.green,0.3f);
-                AddReward(40f / MaxStep);
+                AddReward(80f / MaxStep);
                 rotationSpeed = 0;
+                jumpforce = 0;
+                Shoot();
             }
             else {
+                jumpforce = original_jumpforce;
                 rotationSpeed = initRotationSpeed;
-                if (Physics.Raycast(shootingPoint.position, transform.forward + (Vector3.left / 8), out var hit1, 50f))
+                if (Physics.Raycast(shootingPoint.position, transform.forward + (Vector3.left / 8), out var hit1, 8f))
                 {
                     if (hit1.transform.CompareTag("enemy"))
                     {
                         //Debug.DrawRay(shootingPoint.position, (transform.forward + (Vector3.left / 8)) * 5, Color.blue,0.3f);
-                        AddReward(10f / MaxStep);
+                        AddReward(20f / MaxStep);
                     }
                     else
                     {
-                        if (Physics.Raycast(shootingPoint.position, transform.forward + (Vector3.right / 8), out var hit2, 50f))
+                        if (Physics.Raycast(shootingPoint.position, transform.forward + (Vector3.right / 8), out var hit2, 8f))
                         {
 
                             if (hit2.transform.CompareTag("enemy"))
                             {
                                 //Debug.DrawRay(shootingPoint.position, (transform.forward + (Vector3.right / 8)) * 5, Color.red,0.3f);
-                                AddReward(10f / MaxStep);
+                                AddReward(20f / MaxStep);
                             }
                         }
                     }
@@ -151,7 +166,7 @@ public class ShootingAgent : Agent
             }
         }
 
-        AddReward(-600f / MaxStep); 
+        AddReward(-1000f / MaxStep); 
 
         if (mun_count <= 0)
         {
@@ -163,7 +178,6 @@ public class ShootingAgent : Agent
         }
 
         //recompensa_text.text = GetCumulativeReward().ToString();
-        score_text.text = score.ToString(); 
         if (!ShotAvaliable && !empty_mun)
         {
             StepsUntilShotIsAvaliable--;
@@ -194,14 +208,15 @@ public class ShootingAgent : Agent
         if (transform.localPosition.y <= -3)
         {
             enemyManager.SetEnemiesActive();
-            AddReward(-1f);
-            EndEpisode();
+            AddReward(-100f); 
+            EndEpisode(); 
         }
-        if (transform.localPosition.y > 5)
+        if (transform.localPosition.y > 7)
         { 
-            //print("muy alto");
+            print("muy alto2");
             enemyManager.SetEnemiesActive();
-            AddReward(-3f);
+            AddReward(-50f);
+            oponent.GetComponent<VsAgent>().EndEpisode();
             EndEpisode();
         }
 
@@ -250,6 +265,8 @@ public class ShootingAgent : Agent
 
     public override void Initialize()
     {
+        original_jumpforce = jumpforce;
+        score_text.text = score.ToString();
         initRotationSpeed = rotationSpeed;
         StartingPosition = transform.position;
         Rb = GetComponent<Rigidbody>();
@@ -280,7 +297,7 @@ public class ShootingAgent : Agent
         mun_count = original_mun_count;
         empty_mun = false;
         steps_reloading = 0;
-        transform.localPosition = new Vector3(UnityEngine.Random.Range(-8f, 0f), 1.2f, UnityEngine.Random.Range(-8f, 8f));
+        transform.localPosition = new Vector3(UnityEngine.Random.Range(-8f, -4f), 1.2f, UnityEngine.Random.Range(-8f, 8f));
         transform.rotation = Quaternion.Euler(Vector3.zero);
         Rb.velocity = Vector3.zero;
         ShotAvaliable = true;
@@ -298,6 +315,7 @@ public class ShootingAgent : Agent
     public void die() {
         enemyManager.SetEnemiesActive();
         AddReward(-50f);
+        print("kill");
         EndEpisode(); 
     }
 

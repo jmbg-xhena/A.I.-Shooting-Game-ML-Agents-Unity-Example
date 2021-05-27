@@ -120,7 +120,7 @@ NavMeshSettings:
     accuratePlacement: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 0}
+  m_NavMeshData: {fileID: 23800000, guid: 5f476bd3e117eea43beeb196d6c1ac8d, type: 2}
 --- !u!1001 &12520103
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -146,7 +146,12 @@ PrefabInstance:
     - target: {fileID: 3076388863631003760, guid: 308117823078f4e49bc763ef5bb6dfd2,
         type: 3}
       propertyPath: m_BehaviorType
-      value: 0
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3076388863631003760, guid: 308117823078f4e49bc763ef5bb6dfd2,
+        type: 3}
+      propertyPath: m_BrainParameters.NumStackedVectorObservations
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3076388863660137338, guid: 308117823078f4e49bc763ef5bb6dfd2,
         type: 3}
@@ -222,12 +227,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Model
       value: 
-      objectReference: {fileID: 5022602860645237092, guid: 42e517de122ad9d48880d7fd7b2b4907,
-        type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 8732843575744590190, guid: 308117823078f4e49bc763ef5bb6dfd2,
         type: 3}
       propertyPath: m_BehaviorType
-      value: 2
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8732843575744590190, guid: 308117823078f4e49bc763ef5bb6dfd2,
+        type: 3}
+      propertyPath: m_BrainParameters.NumStackedVectorObservations
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8732843575744590193, guid: 308117823078f4e49bc763ef5bb6dfd2,
         type: 3}
@@ -274,7 +283,12 @@ PrefabInstance:
     - target: {fileID: 3076388863631003760, guid: 308117823078f4e49bc763ef5bb6dfd2,
         type: 3}
       propertyPath: m_BehaviorType
-      value: 0
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3076388863631003760, guid: 308117823078f4e49bc763ef5bb6dfd2,
+        type: 3}
+      propertyPath: m_BrainParameters.NumStackedVectorObservations
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3076388863660137338, guid: 308117823078f4e49bc763ef5bb6dfd2,
         type: 3}
@@ -350,12 +364,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Model
       value: 
-      objectReference: {fileID: 5022602860645237092, guid: 42e517de122ad9d48880d7fd7b2b4907,
-        type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 8732843575744590190, guid: 308117823078f4e49bc763ef5bb6dfd2,
         type: 3}
       propertyPath: m_BehaviorType
-      value: 2
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8732843575744590190, guid: 308117823078f4e49bc763ef5bb6dfd2,
+        type: 3}
+      propertyPath: m_BrainParameters.NumStackedVectorObservations
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8732843575744590193, guid: 308117823078f4e49bc763ef5bb6dfd2,
         type: 3}
@@ -402,7 +420,12 @@ PrefabInstance:
     - target: {fileID: 3076388863631003760, guid: 308117823078f4e49bc763ef5bb6dfd2,
         type: 3}
       propertyPath: m_BehaviorType
-      value: 0
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3076388863631003760, guid: 308117823078f4e49bc763ef5bb6dfd2,
+        type: 3}
+      propertyPath: m_BrainParameters.NumStackedVectorObservations
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3076388863660137338, guid: 308117823078f4e49bc763ef5bb6dfd2,
         type: 3}
@@ -478,12 +501,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Model
       value: 
-      objectReference: {fileID: 5022602860645237092, guid: 42e517de122ad9d48880d7fd7b2b4907,
-        type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 8732843575744590190, guid: 308117823078f4e49bc763ef5bb6dfd2,
         type: 3}
       propertyPath: m_BehaviorType
-      value: 2
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8732843575744590190, guid: 308117823078f4e49bc763ef5bb6dfd2,
+        type: 3}
+      propertyPath: m_BrainParameters.NumStackedVectorObservations
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8732843575744590193, guid: 308117823078f4e49bc763ef5bb6dfd2,
         type: 3}
@@ -530,7 +557,12 @@ PrefabInstance:
     - target: {fileID: 3076388863631003760, guid: 308117823078f4e49bc763ef5bb6dfd2,
         type: 3}
       propertyPath: m_BehaviorType
-      value: 0
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3076388863631003760, guid: 308117823078f4e49bc763ef5bb6dfd2,
+        type: 3}
+      propertyPath: m_BrainParameters.NumStackedVectorObservations
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3076388863660137338, guid: 308117823078f4e49bc763ef5bb6dfd2,
         type: 3}
@@ -611,12 +643,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Model
       value: 
-      objectReference: {fileID: 5022602860645237092, guid: 42e517de122ad9d48880d7fd7b2b4907,
-        type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 8732843575744590190, guid: 308117823078f4e49bc763ef5bb6dfd2,
         type: 3}
       propertyPath: m_BehaviorType
-      value: 2
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8732843575744590190, guid: 308117823078f4e49bc763ef5bb6dfd2,
+        type: 3}
+      propertyPath: m_BrainParameters.NumStackedVectorObservations
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8732843575744590193, guid: 308117823078f4e49bc763ef5bb6dfd2,
         type: 3}
@@ -755,7 +791,12 @@ PrefabInstance:
     - target: {fileID: 3076388863631003760, guid: 308117823078f4e49bc763ef5bb6dfd2,
         type: 3}
       propertyPath: m_BehaviorType
-      value: 0
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3076388863631003760, guid: 308117823078f4e49bc763ef5bb6dfd2,
+        type: 3}
+      propertyPath: m_BrainParameters.NumStackedVectorObservations
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3076388863660137338, guid: 308117823078f4e49bc763ef5bb6dfd2,
         type: 3}
@@ -831,12 +872,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Model
       value: 
-      objectReference: {fileID: 5022602860645237092, guid: 42e517de122ad9d48880d7fd7b2b4907,
-        type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 8732843575744590190, guid: 308117823078f4e49bc763ef5bb6dfd2,
         type: 3}
       propertyPath: m_BehaviorType
-      value: 2
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8732843575744590190, guid: 308117823078f4e49bc763ef5bb6dfd2,
+        type: 3}
+      propertyPath: m_BrainParameters.NumStackedVectorObservations
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8732843575744590193, guid: 308117823078f4e49bc763ef5bb6dfd2,
         type: 3}
@@ -883,7 +928,12 @@ PrefabInstance:
     - target: {fileID: 3076388863631003760, guid: 308117823078f4e49bc763ef5bb6dfd2,
         type: 3}
       propertyPath: m_BehaviorType
-      value: 0
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3076388863631003760, guid: 308117823078f4e49bc763ef5bb6dfd2,
+        type: 3}
+      propertyPath: m_BrainParameters.NumStackedVectorObservations
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3076388863660137338, guid: 308117823078f4e49bc763ef5bb6dfd2,
         type: 3}
@@ -959,12 +1009,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Model
       value: 
-      objectReference: {fileID: 5022602860645237092, guid: 42e517de122ad9d48880d7fd7b2b4907,
-        type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 8732843575744590190, guid: 308117823078f4e49bc763ef5bb6dfd2,
         type: 3}
       propertyPath: m_BehaviorType
-      value: 2
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8732843575744590190, guid: 308117823078f4e49bc763ef5bb6dfd2,
+        type: 3}
+      propertyPath: m_BrainParameters.NumStackedVectorObservations
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8732843575744590193, guid: 308117823078f4e49bc763ef5bb6dfd2,
         type: 3}
@@ -1011,7 +1065,12 @@ PrefabInstance:
     - target: {fileID: 3076388863631003760, guid: 308117823078f4e49bc763ef5bb6dfd2,
         type: 3}
       propertyPath: m_BehaviorType
-      value: 0
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3076388863631003760, guid: 308117823078f4e49bc763ef5bb6dfd2,
+        type: 3}
+      propertyPath: m_BrainParameters.NumStackedVectorObservations
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3076388863660137338, guid: 308117823078f4e49bc763ef5bb6dfd2,
         type: 3}
@@ -1087,12 +1146,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Model
       value: 
-      objectReference: {fileID: 5022602860645237092, guid: 42e517de122ad9d48880d7fd7b2b4907,
-        type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 8732843575744590190, guid: 308117823078f4e49bc763ef5bb6dfd2,
         type: 3}
       propertyPath: m_BehaviorType
-      value: 2
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8732843575744590190, guid: 308117823078f4e49bc763ef5bb6dfd2,
+        type: 3}
+      propertyPath: m_BrainParameters.NumStackedVectorObservations
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8732843575744590193, guid: 308117823078f4e49bc763ef5bb6dfd2,
         type: 3}
@@ -1183,7 +1246,12 @@ PrefabInstance:
     - target: {fileID: 3076388863631003760, guid: 308117823078f4e49bc763ef5bb6dfd2,
         type: 3}
       propertyPath: m_BehaviorType
-      value: 0
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3076388863631003760, guid: 308117823078f4e49bc763ef5bb6dfd2,
+        type: 3}
+      propertyPath: m_BrainParameters.NumStackedVectorObservations
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3076388863660137338, guid: 308117823078f4e49bc763ef5bb6dfd2,
         type: 3}
@@ -1259,12 +1327,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Model
       value: 
-      objectReference: {fileID: 5022602860645237092, guid: 42e517de122ad9d48880d7fd7b2b4907,
-        type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 8732843575744590190, guid: 308117823078f4e49bc763ef5bb6dfd2,
         type: 3}
       propertyPath: m_BehaviorType
-      value: 2
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8732843575744590190, guid: 308117823078f4e49bc763ef5bb6dfd2,
+        type: 3}
+      propertyPath: m_BrainParameters.NumStackedVectorObservations
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8732843575744590193, guid: 308117823078f4e49bc763ef5bb6dfd2,
         type: 3}
@@ -1299,7 +1371,12 @@ PrefabInstance:
     - target: {fileID: 3076388863631003760, guid: 308117823078f4e49bc763ef5bb6dfd2,
         type: 3}
       propertyPath: m_BehaviorType
-      value: 0
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3076388863631003760, guid: 308117823078f4e49bc763ef5bb6dfd2,
+        type: 3}
+      propertyPath: m_BrainParameters.NumStackedVectorObservations
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3076388863660137338, guid: 308117823078f4e49bc763ef5bb6dfd2,
         type: 3}
@@ -1375,12 +1452,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Model
       value: 
-      objectReference: {fileID: 5022602860645237092, guid: 42e517de122ad9d48880d7fd7b2b4907,
-        type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 8732843575744590190, guid: 308117823078f4e49bc763ef5bb6dfd2,
         type: 3}
       propertyPath: m_BehaviorType
-      value: 2
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8732843575744590190, guid: 308117823078f4e49bc763ef5bb6dfd2,
+        type: 3}
+      propertyPath: m_BrainParameters.NumStackedVectorObservations
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8732843575744590193, guid: 308117823078f4e49bc763ef5bb6dfd2,
         type: 3}
@@ -1427,7 +1508,12 @@ PrefabInstance:
     - target: {fileID: 3076388863631003760, guid: 308117823078f4e49bc763ef5bb6dfd2,
         type: 3}
       propertyPath: m_BehaviorType
-      value: 0
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3076388863631003760, guid: 308117823078f4e49bc763ef5bb6dfd2,
+        type: 3}
+      propertyPath: m_BrainParameters.NumStackedVectorObservations
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3076388863660137338, guid: 308117823078f4e49bc763ef5bb6dfd2,
         type: 3}
@@ -1503,12 +1589,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Model
       value: 
-      objectReference: {fileID: 5022602860645237092, guid: 42e517de122ad9d48880d7fd7b2b4907,
-        type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 8732843575744590190, guid: 308117823078f4e49bc763ef5bb6dfd2,
         type: 3}
       propertyPath: m_BehaviorType
-      value: 2
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8732843575744590190, guid: 308117823078f4e49bc763ef5bb6dfd2,
+        type: 3}
+      propertyPath: m_BrainParameters.NumStackedVectorObservations
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8732843575744590193, guid: 308117823078f4e49bc763ef5bb6dfd2,
         type: 3}
@@ -1626,7 +1716,12 @@ PrefabInstance:
     - target: {fileID: 3076388863631003760, guid: 308117823078f4e49bc763ef5bb6dfd2,
         type: 3}
       propertyPath: m_BehaviorType
-      value: 0
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3076388863631003760, guid: 308117823078f4e49bc763ef5bb6dfd2,
+        type: 3}
+      propertyPath: m_BrainParameters.NumStackedVectorObservations
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3076388863660137338, guid: 308117823078f4e49bc763ef5bb6dfd2,
         type: 3}
@@ -1702,12 +1797,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Model
       value: 
-      objectReference: {fileID: 5022602860645237092, guid: 42e517de122ad9d48880d7fd7b2b4907,
-        type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 8732843575744590190, guid: 308117823078f4e49bc763ef5bb6dfd2,
         type: 3}
       propertyPath: m_BehaviorType
-      value: 2
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8732843575744590190, guid: 308117823078f4e49bc763ef5bb6dfd2,
+        type: 3}
+      propertyPath: m_BrainParameters.NumStackedVectorObservations
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8732843575744590193, guid: 308117823078f4e49bc763ef5bb6dfd2,
         type: 3}
@@ -1754,7 +1853,12 @@ PrefabInstance:
     - target: {fileID: 3076388863631003760, guid: 308117823078f4e49bc763ef5bb6dfd2,
         type: 3}
       propertyPath: m_BehaviorType
-      value: 0
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3076388863631003760, guid: 308117823078f4e49bc763ef5bb6dfd2,
+        type: 3}
+      propertyPath: m_BrainParameters.NumStackedVectorObservations
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3076388863660137338, guid: 308117823078f4e49bc763ef5bb6dfd2,
         type: 3}
@@ -1830,12 +1934,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Model
       value: 
-      objectReference: {fileID: 5022602860645237092, guid: 42e517de122ad9d48880d7fd7b2b4907,
-        type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 8732843575744590190, guid: 308117823078f4e49bc763ef5bb6dfd2,
         type: 3}
       propertyPath: m_BehaviorType
-      value: 2
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8732843575744590190, guid: 308117823078f4e49bc763ef5bb6dfd2,
+        type: 3}
+      propertyPath: m_BrainParameters.NumStackedVectorObservations
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8732843575744590193, guid: 308117823078f4e49bc763ef5bb6dfd2,
         type: 3}
@@ -1882,7 +1990,12 @@ PrefabInstance:
     - target: {fileID: 3076388863631003760, guid: 308117823078f4e49bc763ef5bb6dfd2,
         type: 3}
       propertyPath: m_BehaviorType
-      value: 0
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3076388863631003760, guid: 308117823078f4e49bc763ef5bb6dfd2,
+        type: 3}
+      propertyPath: m_BrainParameters.NumStackedVectorObservations
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3076388863660137338, guid: 308117823078f4e49bc763ef5bb6dfd2,
         type: 3}
@@ -1958,12 +2071,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Model
       value: 
-      objectReference: {fileID: 5022602860645237092, guid: 42e517de122ad9d48880d7fd7b2b4907,
-        type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 8732843575744590190, guid: 308117823078f4e49bc763ef5bb6dfd2,
         type: 3}
       propertyPath: m_BehaviorType
-      value: 2
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8732843575744590190, guid: 308117823078f4e49bc763ef5bb6dfd2,
+        type: 3}
+      propertyPath: m_BrainParameters.NumStackedVectorObservations
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8732843575744590193, guid: 308117823078f4e49bc763ef5bb6dfd2,
         type: 3}
@@ -2102,7 +2219,12 @@ PrefabInstance:
     - target: {fileID: 3076388863631003760, guid: 308117823078f4e49bc763ef5bb6dfd2,
         type: 3}
       propertyPath: m_BehaviorType
-      value: 0
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3076388863631003760, guid: 308117823078f4e49bc763ef5bb6dfd2,
+        type: 3}
+      propertyPath: m_BrainParameters.NumStackedVectorObservations
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3076388863660137338, guid: 308117823078f4e49bc763ef5bb6dfd2,
         type: 3}
@@ -2178,12 +2300,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Model
       value: 
-      objectReference: {fileID: 5022602860645237092, guid: 42e517de122ad9d48880d7fd7b2b4907,
-        type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 8732843575744590190, guid: 308117823078f4e49bc763ef5bb6dfd2,
         type: 3}
       propertyPath: m_BehaviorType
-      value: 2
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8732843575744590190, guid: 308117823078f4e49bc763ef5bb6dfd2,
+        type: 3}
+      propertyPath: m_BrainParameters.NumStackedVectorObservations
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8732843575744590193, guid: 308117823078f4e49bc763ef5bb6dfd2,
         type: 3}
@@ -2230,7 +2356,12 @@ PrefabInstance:
     - target: {fileID: 3076388863631003760, guid: 308117823078f4e49bc763ef5bb6dfd2,
         type: 3}
       propertyPath: m_BehaviorType
-      value: 0
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3076388863631003760, guid: 308117823078f4e49bc763ef5bb6dfd2,
+        type: 3}
+      propertyPath: m_BrainParameters.NumStackedVectorObservations
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3076388863660137338, guid: 308117823078f4e49bc763ef5bb6dfd2,
         type: 3}
@@ -2306,12 +2437,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Model
       value: 
-      objectReference: {fileID: 5022602860645237092, guid: 42e517de122ad9d48880d7fd7b2b4907,
-        type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 8732843575744590190, guid: 308117823078f4e49bc763ef5bb6dfd2,
         type: 3}
       propertyPath: m_BehaviorType
-      value: 2
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8732843575744590190, guid: 308117823078f4e49bc763ef5bb6dfd2,
+        type: 3}
+      propertyPath: m_BrainParameters.NumStackedVectorObservations
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8732843575744590193, guid: 308117823078f4e49bc763ef5bb6dfd2,
         type: 3}
@@ -2370,7 +2505,12 @@ PrefabInstance:
     - target: {fileID: 3076388863631003760, guid: 308117823078f4e49bc763ef5bb6dfd2,
         type: 3}
       propertyPath: m_BehaviorType
-      value: 0
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3076388863631003760, guid: 308117823078f4e49bc763ef5bb6dfd2,
+        type: 3}
+      propertyPath: m_BrainParameters.NumStackedVectorObservations
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3076388863660137338, guid: 308117823078f4e49bc763ef5bb6dfd2,
         type: 3}
@@ -2446,12 +2586,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Model
       value: 
-      objectReference: {fileID: 5022602860645237092, guid: 42e517de122ad9d48880d7fd7b2b4907,
-        type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 8732843575744590190, guid: 308117823078f4e49bc763ef5bb6dfd2,
         type: 3}
       propertyPath: m_BehaviorType
-      value: 2
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8732843575744590190, guid: 308117823078f4e49bc763ef5bb6dfd2,
+        type: 3}
+      propertyPath: m_BrainParameters.NumStackedVectorObservations
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 308117823078f4e49bc763ef5bb6dfd2, type: 3}

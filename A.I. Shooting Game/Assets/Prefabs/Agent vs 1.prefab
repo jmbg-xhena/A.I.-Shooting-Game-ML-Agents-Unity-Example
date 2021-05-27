@@ -129,12 +129,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BrainParameters:
-    VectorObservationSize: 4
+    VectorObservationSize: 8
     NumStackedVectorObservations: 1
     VectorActionSize: 06000000
     VectorActionDescriptions: []
     VectorActionSpaceType: 1
-  m_Model: {fileID: 5022602860645237092, guid: 42e517de122ad9d48880d7fd7b2b4907, type: 3}
+  m_Model: {fileID: 0}
   m_InferenceDevice: 1
   m_BehaviorType: 0
   m_BehaviorName: vs
@@ -231,6 +231,7 @@ MonoBehaviour:
   rotationSpeed: 6
   initRotationSpeed: 0
   jumpforce: 100
+  original_jumpforce: 0
   jumps: 0
   jumping: 0
   recompensa_text: {fileID: 0}
@@ -253,6 +254,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  oponent: {fileID: 0}
+  multip: 1
 --- !u!1 &2125964477394736856
 GameObject:
   m_ObjectHideFlags: 0
