@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7102176988200317955}
   m_Layer: 0
   m_Name: Recargador (2)
-  m_TagString: Untagged
+  m_TagString: mun
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -351,7 +351,7 @@ GameObject:
   - component: {fileID: 951006615651823582}
   m_Layer: 0
   m_Name: Recargador (1)
-  m_TagString: Untagged
+  m_TagString: mun
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -528,7 +528,7 @@ GameObject:
   - component: {fileID: 8365630585152225632}
   m_Layer: 0
   m_Name: Recargador
-  m_TagString: Untagged
+  m_TagString: mun
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -785,7 +785,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4219716781928229376
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1086,7 +1086,7 @@ GameObject:
   - component: {fileID: 4648220500082058024}
   - component: {fileID: 7066302243990869462}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: vacio
   m_TagString: vacio
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1100,7 +1100,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4944056952065113225}
   m_LocalRotation: {x: 0.21612436, y: 0, z: 0, w: 0.97636586}
-  m_LocalPosition: {x: 0, y: 1.06, z: -12.52}
+  m_LocalPosition: {x: 0, y: 0.75, z: -12.67}
   m_LocalScale: {x: 9.610927, y: 3.1422, z: 9.431014}
   m_Children: []
   m_Father: {fileID: 3076388863660137338}
@@ -1117,8 +1117,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 1, z: 1.1531185}
+  m_Center: {x: 0, y: -0.000000002524363, z: -0.010048074}
 --- !u!1 &5706238509689328029
 GameObject:
   m_ObjectHideFlags: 0
@@ -1134,7 +1134,7 @@ GameObject:
   - component: {fileID: 5942141694221081009}
   m_Layer: 0
   m_Name: Recargador (3)
-  m_TagString: Untagged
+  m_TagString: mun
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5850,6 +5850,41 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3076388863660137338}
     m_Modifications:
+    - target: {fileID: 990233628074985493, guid: 81f99d74e1c496c46b950fec0d66bcca,
+        type: 3}
+      propertyPath: m_DetectableTags.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 990233628074985493, guid: 81f99d74e1c496c46b950fec0d66bcca,
+        type: 3}
+      propertyPath: m_DetectableTags.Array.data[2]
+      value: vacio
+      objectReference: {fileID: 0}
+    - target: {fileID: 990233628074985493, guid: 81f99d74e1c496c46b950fec0d66bcca,
+        type: 3}
+      propertyPath: m_DetectableTags.Array.data[0]
+      value: agent
+      objectReference: {fileID: 0}
+    - target: {fileID: 990233628074985493, guid: 81f99d74e1c496c46b950fec0d66bcca,
+        type: 3}
+      propertyPath: m_DetectableTags.Array.data[3]
+      value: mun
+      objectReference: {fileID: 0}
+    - target: {fileID: 990233628074985493, guid: 81f99d74e1c496c46b950fec0d66bcca,
+        type: 3}
+      propertyPath: m_DetectableTags.Array.data[4]
+      value: mina azul
+      objectReference: {fileID: 0}
+    - target: {fileID: 990233628074985493, guid: 81f99d74e1c496c46b950fec0d66bcca,
+        type: 3}
+      propertyPath: m_DetectableTags.Array.data[5]
+      value: ps
+      objectReference: {fileID: 0}
+    - target: {fileID: 990233628074985493, guid: 81f99d74e1c496c46b950fec0d66bcca,
+        type: 3}
+      propertyPath: m_SphereCastRadius
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 2125964477199032896, guid: 81f99d74e1c496c46b950fec0d66bcca,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -5924,6 +5959,41 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Model
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2125964477199032922, guid: 81f99d74e1c496c46b950fec0d66bcca,
+        type: 3}
+      propertyPath: m_DetectableTags.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2125964477199032922, guid: 81f99d74e1c496c46b950fec0d66bcca,
+        type: 3}
+      propertyPath: m_DetectableTags.Array.data[2]
+      value: vacio
+      objectReference: {fileID: 0}
+    - target: {fileID: 2125964477199032922, guid: 81f99d74e1c496c46b950fec0d66bcca,
+        type: 3}
+      propertyPath: m_DetectableTags.Array.data[0]
+      value: agent
+      objectReference: {fileID: 0}
+    - target: {fileID: 2125964477199032922, guid: 81f99d74e1c496c46b950fec0d66bcca,
+        type: 3}
+      propertyPath: m_DetectableTags.Array.data[3]
+      value: mun
+      objectReference: {fileID: 0}
+    - target: {fileID: 2125964477199032922, guid: 81f99d74e1c496c46b950fec0d66bcca,
+        type: 3}
+      propertyPath: m_DetectableTags.Array.data[4]
+      value: mina azul
+      objectReference: {fileID: 0}
+    - target: {fileID: 2125964477199032922, guid: 81f99d74e1c496c46b950fec0d66bcca,
+        type: 3}
+      propertyPath: m_DetectableTags.Array.data[5]
+      value: ps
+      objectReference: {fileID: 0}
+    - target: {fileID: 2125964477199032922, guid: 81f99d74e1c496c46b950fec0d66bcca,
+        type: 3}
+      propertyPath: m_SphereCastRadius
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 7255786749456454632, guid: 81f99d74e1c496c46b950fec0d66bcca,
         type: 3}

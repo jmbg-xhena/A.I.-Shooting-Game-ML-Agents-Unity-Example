@@ -260,7 +260,7 @@ public class VsAgent : Agent
 
         if (transform.localPosition.y <= -10)
         {
-            AddReward(-100f);
+            AddReward(-200f);
             EndEpisode();
         }
         if (transform.localPosition.y > 12)
@@ -433,7 +433,7 @@ public class VsAgent : Agent
         if (other.gameObject.CompareTag("vacio"))
         {
             print("vacio");
-            AddReward(-2f);
+            AddReward(-5f);
         }
     }
 
