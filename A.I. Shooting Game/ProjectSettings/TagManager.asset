@@ -29,6 +29,13 @@ TagManager:
   - food
   - enemy
   - mun
+  - pared
+  - vacio
+  - mina azul
+  - mina roja
+  - FxTemporaire
+  - ps
+  - pvs
   layers:
   - Default
   - TransparentFX

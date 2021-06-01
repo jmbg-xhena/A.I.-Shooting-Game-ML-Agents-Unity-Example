@@ -9,6 +9,7 @@ using UnityEngine.UI;
 
 public class VsAgent : Agent
 {
+    public GameObject mina;
     public int score = 0;
     public float speed = 3f;
     public float rotationSpeed = 3f;
@@ -30,7 +31,15 @@ public class VsAgent : Agent
     public bool reloading = false;
     public float reload_steps;
     public int steps_reloading;
+    public bool reloading_mina = false;
+    public float reload_steps_mina;
+    public int steps_reloading_mina;
+    public bool reloading_dash = false;
+    public float reload_steps_dash;
+    public int steps_reloading_dash;
+    public bool dashing = false;
     public bool empty_mun = false;
+    public Animator anim;
 
     public Projectile projectile;
 
@@ -47,6 +56,11 @@ public class VsAgent : Agent
     public GameObject[] recargador;
     public GameObject oponent;
     public float multip = 1;
+
+    public ParticleSystem jump;
+    public ParticleSystem dash;
+    public ParticleSystem hit;
+    public ParticleSystem expl;
 
     private void Shoot()
     {
@@ -68,12 +82,15 @@ public class VsAgent : Agent
         {
             if (hit.transform.CompareTag("agent"))
             {
-                AddReward(200f*multip);
-                score++;
-                score_text.text = score.ToString();
+                AddReward(100f*multip);
+                //score++;
+                //score_text.text = score.ToString();
                 //multip += 0.1f;
-                hit.rigidbody.gameObject.GetComponent<ShootingAgent>().die();
-                EndEpisode();
+                //hit.rigidbody.gameObject.GetComponent<ShootingAgent>().die();
+                //hit.rigidbody.gameObject.GetComponent<ShootingAgent>().hit.gameObject.transform.position = hit.transform.position;
+                //hit.rigidbody.gameObject.GetComponent<ShootingAgent>().hit.Play();
+                //EndEpisode();
+                hit.transform.GetComponent<ShootingAgent>().SetReward(-10);
             }
             else
             {
@@ -102,6 +119,7 @@ public class VsAgent : Agent
 
     private void FixedUpdate()
     {
+        score_text.text = score.ToString();
         if (Rb.velocity.x >= 3 || Rb.velocity.x <= -3 || Rb.velocity.z >= 3 || Rb.velocity.z <=-3) {
             AddReward(0.2f);
         }
@@ -134,8 +152,10 @@ public class VsAgent : Agent
                 //Debug.DrawRay(shootingPoint.position, transform.forward * 5, Color.green,0.3f);
                 AddReward(80f / MaxStep);
                 rotationSpeed = 0;
-                jumpforce = 0; 
-                Shoot();
+                jumpforce = 0;
+                if (ShotAvaliable && !reloading && !empty_mun)
+                    anim.SetTrigger("shoot");
+                Invoke("Shoot", 1f);
             }
             else
             {
@@ -164,7 +184,7 @@ public class VsAgent : Agent
             }
         }
 
-        AddReward(-1000f / MaxStep); 
+        AddReward(-500f / MaxStep);
 
         if (mun_count <= 0)
         {
@@ -199,12 +219,33 @@ public class VsAgent : Agent
             bullets_count = original_bullets_count;
         }
 
+        if (reloading_mina)
+        {
+            steps_reloading_mina++;
+        }
+        if ((steps_reloading_mina > reload_steps_mina) && reloading_mina)
+        {
+            steps_reloading_mina = 0;
+            reloading_mina = false;
+        }
+
+        if (reloading_dash)
+        {
+            steps_reloading_dash++;
+        }
+        if ((steps_reloading_dash > reload_steps_dash) && reloading_dash)
+        {
+            steps_reloading_dash = 0;
+            reloading_dash = false;
+            dashing = false;
+        }
+
         if (jumping)
         {
             Rb.AddForce(new Vector3(0, -9.8f, 0), ForceMode.VelocityChange);
         }
 
-        if (transform.localPosition.y <= -3)
+        if (transform.localPosition.y <= -10)
         {
             AddReward(-100f);
             EndEpisode();
@@ -238,16 +279,28 @@ public class VsAgent : Agent
     {
         if (Mathf.RoundToInt(vectorAction[4]) >= 1 && !jumping && jumps < 1)
         {
+            jump.transform.position = transform.position+Vector3.down*3;
+            jump.Play();
             //print("jump");
             jumps++;
             jumping = true;
             Rb.AddForce(new Vector3(0, jumpforce, 0), ForceMode.VelocityChange);
             //AddReward(0.005f);
+            AddReward(-0.1f);
         }
 
         if (Mathf.RoundToInt(vectorAction[0]) >= 1)
         {
-            Shoot();
+            if (ShotAvaliable && !reloading && !empty_mun)
+                anim.SetTrigger("shoot");
+            Invoke("Shoot", 1f);
+            //Shoot();
+        }
+
+        if (Mathf.RoundToInt(vectorAction[5]) >= 1 && !reloading_mina && !jumping)
+        {
+            mina.transform.localPosition = transform.localPosition;
+            reloading_mina = true;
         }
 
         /*if (Mathf.RoundToInt(vectorAction[5]) >= 1)
@@ -255,13 +308,25 @@ public class VsAgent : Agent
             reloading = true;
         }*/
 
-
-        Rb.velocity = new Vector3(vectorAction[2] * speed, 0, vectorAction[1] * speed);
+        if (Mathf.RoundToInt(vectorAction[6]) >= 1 && !dashing)
+        {
+            dash.transform.position = transform.position;
+            dash.Play();
+            Rb.velocity = new Vector3(vectorAction[2] * speed, 0, vectorAction[1] * speed)*100;
+            dashing = true;
+            reloading_dash = true;
+             //AddReward(7.5f);
+        }
+        else {
+            Rb.velocity = new Vector3(vectorAction[2] * speed, 0, vectorAction[1] * speed);
+        }
         transform.Rotate(Vector3.up, vectorAction[3] * rotationSpeed);
     }
 
     public override void Initialize()
     {
+        reload_steps_mina = reload_steps * 4;
+        reload_steps_dash = reload_steps * 2;
         score_text.text = score.ToString();
         initRotationSpeed = rotationSpeed;
         original_jumpforce = jumpforce;
@@ -277,16 +342,20 @@ public class VsAgent : Agent
 
     public override void Heuristic(float[] actionsOut)
     {
-        actionsOut[0] = Input.GetKeyDown(KeyCode.P) ? 1f : 0f;
+        actionsOut[0] = Input.GetMouseButtonDown(0) ? 1f : 0f;
         actionsOut[1] = Input.GetAxis("Horizontal");
         actionsOut[2] = -Input.GetAxis("Vertical");
         actionsOut[3] = Input.GetAxis("Rotate");
         actionsOut[4] = Input.GetKeyDown(KeyCode.Space) ? 1f : 0f;
+        actionsOut[5] = Input.GetMouseButtonDown(1) ? 1f : 0f;
+        actionsOut[6] = Input.GetKeyDown(KeyCode.C)? 1f : 0f;
         //actionsOut[5] = Input.GetKeyDown(KeyCode.R) ? 1f : 0f;
     }
 
     public override void OnEpisodeBegin()
     {
+        score_text.text = score.ToString();
+        mina.transform.position = Vector3.up * 200;
         OnEnvironmentReset?.Invoke();
         //Load Parameter from Curciulum
         minStepsBetweenShots = Mathf.FloorToInt(EnvironmentParameters.GetWithDefault("shootingFrequenzy", 30f));
@@ -294,7 +363,9 @@ public class VsAgent : Agent
         mun_count = original_mun_count;
         empty_mun = false;
         steps_reloading = 0;
-        transform.localPosition = new Vector3(UnityEngine.Random.Range(4f,8f),1.2f, UnityEngine.Random.Range(-8f, 8f));
+        //transform.localPosition = new Vector3(UnityEngine.Random.Range(4f, 8f), 1.2f, UnityEngine.Random.Range(-8f, 8f));
+        transform.localPosition = new Vector3(UnityEngine.Random.Range(6f,11f),6f, UnityEngine.Random.Range(-30f,5f));
+        jumping = true;
         transform.rotation = Quaternion.Euler(Vector3.zero);
         Rb.velocity = Vector3.zero;
         ShotAvaliable = true;
@@ -311,7 +382,7 @@ public class VsAgent : Agent
         if (other.gameObject.CompareTag("agent"))
         {
             AddReward(-50f);
-            EndEpisode();
+            //EndEpisode();
         }
         if (other.gameObject.CompareTag("mun"))
         {
@@ -337,6 +408,45 @@ public class VsAgent : Agent
         if (collision.gameObject.CompareTag("ground"))
         {
             jumps = 0;
+        }
+        if (collision.gameObject.CompareTag("pared") || collision.gameObject.CompareTag("wall")) 
+        {
+            AddReward(-0.5f);
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.CompareTag("vacio"))
+        {
+            print("vacio");
+            AddReward(-2f);
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("mina azul"))
+        {
+            AddReward(-50f);
+            print("mina azul");
+            oponent.GetComponent<ShootingAgent>().AddReward(400);
+            oponent.GetComponent<ShootingAgent>().score++;
+            expl.transform.position = transform.position;
+            expl.Play();
+            oponent.GetComponent<ShootingAgent>().EndEpisode();
+            EndEpisode();
+        }
+        if (other.gameObject.CompareTag("ps"))
+        {
+            AddReward(-50f);
+            print("dead hit");
+            oponent.GetComponent<ShootingAgent>().AddReward(400);
+            oponent.GetComponent<ShootingAgent>().score++;
+            hit.transform.position = transform.position;
+            hit.Play();
+            oponent.GetComponent<ShootingAgent>().EndEpisode();
+            EndEpisode();
         }
     }
 
