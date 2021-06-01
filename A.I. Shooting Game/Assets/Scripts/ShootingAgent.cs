@@ -21,6 +21,7 @@ public class ShootingAgent : Agent
     public bool jumping = false;
     //public Text recompensa_text;
     public Text score_text;
+    public Text recarga_text;
 
     public Transform shootingPoint;
     public int minStepsBetweenShots = 50;
@@ -62,6 +63,8 @@ public class ShootingAgent : Agent
     public ParticleSystem dash;
     public ParticleSystem hit;
     public ParticleSystem expl;
+    private Vector3 move;
+    private float rotation;
 
 
     private void Shoot()
@@ -119,6 +122,68 @@ public class ShootingAgent : Agent
         //sensor.AddObservation(Vector3.Distance(this.transform.localPosition,this.recargador.transform.localPosition));
     }
 
+    private void Update()
+    {
+        if (empty_mun)
+        {
+            recarga_text.enabled = true;
+        }
+        else
+        {
+            recarga_text.enabled = false;
+        }
+
+        move.z = Input.GetAxis("Horizontal");
+        move.x = -Input.GetAxis("Vertical");
+        rotation = Input.GetAxis("Rotate");
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            jump.transform.position = transform.position + Vector3.down * 3;
+            jump.Play();
+            //print("jump");
+            jumps++;
+            jumping = true;
+            Rb.AddForce(new Vector3(0, jumpforce, 0), ForceMode.VelocityChange);
+            //AddReward(0.005f);
+            AddReward(-0.1f);
+        }
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            if (ShotAvaliable && !reloading && !empty_mun)
+                anim.SetTrigger("shoot");
+            Invoke("Shoot", 1f);
+        }
+        if (Input.GetMouseButtonDown(1) && !reloading_mina && !jumping)
+        {
+            reloading_mina = true;
+            mina.transform.localPosition = transform.localPosition;
+        }
+
+        /*if (Mathf.RoundToInt(vectorAction[5]) >= 1)
+        {
+            reloading = true;
+        }*/
+        if (!dashing)
+        {
+            Rb.velocity = new Vector3(move.x * speed, 0, move.z * speed);
+        }
+        else {
+            dashing=false;
+        }
+
+        if (Input.GetKeyDown(KeyCode.C) && !reloading_dash)
+        {
+            dash.transform.position = transform.position;
+            dash.Play();
+            Rb.velocity = new Vector3(move.x *30* speed, 0, move.z *30 * speed);
+            dashing = true;
+            reloading_dash = true;
+            //AddReward(1f);
+        }
+        transform.Rotate(Vector3.up, rotation/5 * rotationSpeed);
+    }
+
     private void FixedUpdate()
     {
         score_text.text = score.ToString();
@@ -153,11 +218,11 @@ public class ShootingAgent : Agent
             {
                 //Debug.DrawRay(shootingPoint.position, transform.forward * 5, Color.green,0.3f);
                 AddReward(80f / MaxStep);
-                rotationSpeed = 0;
+                /*rotationSpeed = 0;
                 jumpforce = 0;
                 if (ShotAvaliable && !reloading && !empty_mun)
                     anim.SetTrigger("shoot");
-                Invoke("Shoot", 1f);
+                Invoke("Shoot", 1f);*/
             }
             else {
                 jumpforce = original_jumpforce;
@@ -236,7 +301,6 @@ public class ShootingAgent : Agent
         {
             steps_reloading_dash = 0;
             reloading_dash = false;
-            dashing = false;
         }
 
         if (jumping)
@@ -278,7 +342,7 @@ public class ShootingAgent : Agent
     }
     public override void OnActionReceived(float[] vectorAction)
     {
-        if (Mathf.RoundToInt(vectorAction[4]) >= 1 && !jumping && jumps<1)
+        /*if (Mathf.RoundToInt(vectorAction[4]) >= 1 && !jumping && jumps<1)
         {
             jump.transform.position = transform.position+Vector3.down*3;
             jump.Play();
@@ -306,7 +370,7 @@ public class ShootingAgent : Agent
         {
             reloading = true;
         }*/
-        if (Mathf.RoundToInt(vectorAction[6]) >= 1 && !dashing)
+        /*if (Mathf.RoundToInt(vectorAction[6]) >= 1 && !dashing)
         {
             dash.transform.position = transform.position;
             dash.Play();
@@ -319,7 +383,7 @@ public class ShootingAgent : Agent
         {
             Rb.velocity = new Vector3(vectorAction[2] * speed, 0, vectorAction[1] * speed);
         }
-        transform.Rotate(Vector3.up, vectorAction[3] * rotationSpeed);
+        transform.Rotate(Vector3.up, vectorAction[3] * rotationSpeed);*/
     }
 
     public override void Initialize()
@@ -341,13 +405,13 @@ public class ShootingAgent : Agent
 
     public override void Heuristic(float[] actionsOut)
     {
-        actionsOut[0] = Input.GetMouseButtonDown(0) ? 1f : 0f;
+        /*actionsOut[0] = Input.GetMouseButtonDown(0) ? 1f : 0f;
         actionsOut[1] = Input.GetAxis("Horizontal");
         actionsOut[2] = -Input.GetAxis("Vertical");
         actionsOut[3] = Input.GetAxis("Rotate");
         actionsOut[4] = Input.GetKeyDown(KeyCode.Space) ? 1f : 0f;
         actionsOut[5] = Input.GetMouseButtonDown(1) ? 1f : 0f;
-        actionsOut[6] = Input.GetKeyDown(KeyCode.C) ? 1f : 0f;
+        actionsOut[6] = Input.GetKeyDown(KeyCode.C) ? 1f : 0f;*/
         //actionsOut[5] = Input.GetKeyDown(KeyCode.R) ? 1f : 0f;
     }
 

@@ -222,7 +222,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 546586818, guid: b67873768fb7ca042a54f53f59a014bf, type: 3}
       propertyPath: MaxStep
-      value: 5000
+      value: 500000
       objectReference: {fileID: 0}
     - target: {fileID: 546586818, guid: b67873768fb7ca042a54f53f59a014bf, type: 3}
       propertyPath: speed
@@ -236,7 +236,7 @@ PrefabInstance:
     - target: {fileID: 3076388863631003759, guid: b67873768fb7ca042a54f53f59a014bf,
         type: 3}
       propertyPath: MaxStep
-      value: 5000
+      value: 5000000
       objectReference: {fileID: 0}
     - target: {fileID: 3076388863631003759, guid: b67873768fb7ca042a54f53f59a014bf,
         type: 3}
@@ -347,7 +347,7 @@ PrefabInstance:
     - target: {fileID: 8732843575744590190, guid: b67873768fb7ca042a54f53f59a014bf,
         type: 3}
       propertyPath: m_BehaviorType
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8732843575744590190, guid: b67873768fb7ca042a54f53f59a014bf,
         type: 3}
@@ -375,7 +375,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 546586818, guid: b67873768fb7ca042a54f53f59a014bf, type: 3}
       propertyPath: MaxStep
-      value: 5000
+      value: 500000
       objectReference: {fileID: 0}
     - target: {fileID: 546586818, guid: b67873768fb7ca042a54f53f59a014bf, type: 3}
       propertyPath: speed
@@ -389,7 +389,7 @@ PrefabInstance:
     - target: {fileID: 3076388863631003759, guid: b67873768fb7ca042a54f53f59a014bf,
         type: 3}
       propertyPath: MaxStep
-      value: 5000
+      value: 5000000
       objectReference: {fileID: 0}
     - target: {fileID: 3076388863631003759, guid: b67873768fb7ca042a54f53f59a014bf,
         type: 3}
@@ -500,7 +500,7 @@ PrefabInstance:
     - target: {fileID: 8732843575744590190, guid: b67873768fb7ca042a54f53f59a014bf,
         type: 3}
       propertyPath: m_BehaviorType
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8732843575744590190, guid: b67873768fb7ca042a54f53f59a014bf,
         type: 3}
@@ -528,7 +528,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 546586818, guid: b67873768fb7ca042a54f53f59a014bf, type: 3}
       propertyPath: MaxStep
-      value: 5000
+      value: 500000
       objectReference: {fileID: 0}
     - target: {fileID: 546586818, guid: b67873768fb7ca042a54f53f59a014bf, type: 3}
       propertyPath: speed
@@ -542,7 +542,7 @@ PrefabInstance:
     - target: {fileID: 3076388863631003759, guid: b67873768fb7ca042a54f53f59a014bf,
         type: 3}
       propertyPath: MaxStep
-      value: 5000
+      value: 5000000
       objectReference: {fileID: 0}
     - target: {fileID: 3076388863631003759, guid: b67873768fb7ca042a54f53f59a014bf,
         type: 3}
@@ -653,7 +653,7 @@ PrefabInstance:
     - target: {fileID: 8732843575744590190, guid: b67873768fb7ca042a54f53f59a014bf,
         type: 3}
       propertyPath: m_BehaviorType
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8732843575744590190, guid: b67873768fb7ca042a54f53f59a014bf,
         type: 3}
@@ -681,7 +681,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 546586818, guid: b67873768fb7ca042a54f53f59a014bf, type: 3}
       propertyPath: MaxStep
-      value: 5000
+      value: 500000
       objectReference: {fileID: 0}
     - target: {fileID: 546586818, guid: b67873768fb7ca042a54f53f59a014bf, type: 3}
       propertyPath: speed
@@ -695,7 +695,7 @@ PrefabInstance:
     - target: {fileID: 3076388863631003759, guid: b67873768fb7ca042a54f53f59a014bf,
         type: 3}
       propertyPath: MaxStep
-      value: 5000
+      value: 5000000
       objectReference: {fileID: 0}
     - target: {fileID: 3076388863631003759, guid: b67873768fb7ca042a54f53f59a014bf,
         type: 3}
@@ -871,7 +871,7 @@ PrefabInstance:
     - target: {fileID: 8732843575744590190, guid: b67873768fb7ca042a54f53f59a014bf,
         type: 3}
       propertyPath: m_BehaviorType
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8732843575744590190, guid: b67873768fb7ca042a54f53f59a014bf,
         type: 3}
@@ -901,7 +901,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 546586818, guid: b67873768fb7ca042a54f53f59a014bf, type: 3}
       propertyPath: MaxStep
-      value: 5000
+      value: 500000
       objectReference: {fileID: 0}
     - target: {fileID: 546586818, guid: b67873768fb7ca042a54f53f59a014bf, type: 3}
       propertyPath: speed
@@ -915,7 +915,7 @@ PrefabInstance:
     - target: {fileID: 3076388863631003759, guid: b67873768fb7ca042a54f53f59a014bf,
         type: 3}
       propertyPath: MaxStep
-      value: 5000
+      value: 5000000
       objectReference: {fileID: 0}
     - target: {fileID: 3076388863631003759, guid: b67873768fb7ca042a54f53f59a014bf,
         type: 3}
@@ -1054,7 +1054,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 546586818, guid: b67873768fb7ca042a54f53f59a014bf, type: 3}
       propertyPath: MaxStep
-      value: 5000
+      value: 500000
       objectReference: {fileID: 0}
     - target: {fileID: 546586818, guid: b67873768fb7ca042a54f53f59a014bf, type: 3}
       propertyPath: speed
@@ -1068,7 +1068,7 @@ PrefabInstance:
     - target: {fileID: 3076388863631003759, guid: b67873768fb7ca042a54f53f59a014bf,
         type: 3}
       propertyPath: MaxStep
-      value: 5000
+      value: 5000000
       objectReference: {fileID: 0}
     - target: {fileID: 3076388863631003759, guid: b67873768fb7ca042a54f53f59a014bf,
         type: 3}
@@ -1179,7 +1179,7 @@ PrefabInstance:
     - target: {fileID: 8732843575744590190, guid: b67873768fb7ca042a54f53f59a014bf,
         type: 3}
       propertyPath: m_BehaviorType
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8732843575744590190, guid: b67873768fb7ca042a54f53f59a014bf,
         type: 3}
@@ -1299,7 +1299,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 546586818, guid: b67873768fb7ca042a54f53f59a014bf, type: 3}
       propertyPath: MaxStep
-      value: 5000
+      value: 500000
       objectReference: {fileID: 0}
     - target: {fileID: 546586818, guid: b67873768fb7ca042a54f53f59a014bf, type: 3}
       propertyPath: speed
@@ -1313,7 +1313,7 @@ PrefabInstance:
     - target: {fileID: 3076388863631003759, guid: b67873768fb7ca042a54f53f59a014bf,
         type: 3}
       propertyPath: MaxStep
-      value: 5000
+      value: 5000000
       objectReference: {fileID: 0}
     - target: {fileID: 3076388863631003759, guid: b67873768fb7ca042a54f53f59a014bf,
         type: 3}
@@ -1424,7 +1424,7 @@ PrefabInstance:
     - target: {fileID: 8732843575744590190, guid: b67873768fb7ca042a54f53f59a014bf,
         type: 3}
       propertyPath: m_BehaviorType
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8732843575744590190, guid: b67873768fb7ca042a54f53f59a014bf,
         type: 3}
@@ -1496,7 +1496,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 13.36
+  orthographic size: 17.1
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1519,13 +1519,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1543754946}
-  m_LocalRotation: {x: 0.4665917, y: -0.53172547, z: 0.47004986, w: 0.52783847}
-  m_LocalPosition: {x: 3.8017433, y: 31.298822, z: -14.708312}
+  m_LocalRotation: {x: 0.45446748, y: -0.5417189, z: 0.45457143, w: 0.54163164}
+  m_LocalPosition: {x: 9.8, y: 62, z: -13}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 49.947002, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 80, y: -90, z: 0.011000001}
 --- !u!1 &1667819446
 GameObject:
   m_ObjectHideFlags: 0
@@ -1627,7 +1627,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 546586818, guid: b67873768fb7ca042a54f53f59a014bf, type: 3}
       propertyPath: MaxStep
-      value: 5000
+      value: 500000
       objectReference: {fileID: 0}
     - target: {fileID: 546586818, guid: b67873768fb7ca042a54f53f59a014bf, type: 3}
       propertyPath: speed
@@ -1641,7 +1641,7 @@ PrefabInstance:
     - target: {fileID: 3076388863631003759, guid: b67873768fb7ca042a54f53f59a014bf,
         type: 3}
       propertyPath: MaxStep
-      value: 5000
+      value: 5000000
       objectReference: {fileID: 0}
     - target: {fileID: 3076388863631003759, guid: b67873768fb7ca042a54f53f59a014bf,
         type: 3}
@@ -1752,7 +1752,7 @@ PrefabInstance:
     - target: {fileID: 8732843575744590190, guid: b67873768fb7ca042a54f53f59a014bf,
         type: 3}
       propertyPath: m_BehaviorType
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8732843575744590190, guid: b67873768fb7ca042a54f53f59a014bf,
         type: 3}
@@ -1780,7 +1780,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 546586818, guid: b67873768fb7ca042a54f53f59a014bf, type: 3}
       propertyPath: MaxStep
-      value: 5000
+      value: 500000
       objectReference: {fileID: 0}
     - target: {fileID: 546586818, guid: b67873768fb7ca042a54f53f59a014bf, type: 3}
       propertyPath: speed
@@ -1794,7 +1794,7 @@ PrefabInstance:
     - target: {fileID: 3076388863631003759, guid: b67873768fb7ca042a54f53f59a014bf,
         type: 3}
       propertyPath: MaxStep
-      value: 5000
+      value: 5000000
       objectReference: {fileID: 0}
     - target: {fileID: 3076388863631003759, guid: b67873768fb7ca042a54f53f59a014bf,
         type: 3}
@@ -1933,7 +1933,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 546586818, guid: b67873768fb7ca042a54f53f59a014bf, type: 3}
       propertyPath: MaxStep
-      value: 5000
+      value: 500000
       objectReference: {fileID: 0}
     - target: {fileID: 546586818, guid: b67873768fb7ca042a54f53f59a014bf, type: 3}
       propertyPath: speed
@@ -1947,7 +1947,7 @@ PrefabInstance:
     - target: {fileID: 3076388863631003759, guid: b67873768fb7ca042a54f53f59a014bf,
         type: 3}
       propertyPath: MaxStep
-      value: 5000
+      value: 5000000
       objectReference: {fileID: 0}
     - target: {fileID: 3076388863631003759, guid: b67873768fb7ca042a54f53f59a014bf,
         type: 3}
@@ -2058,7 +2058,7 @@ PrefabInstance:
     - target: {fileID: 8732843575744590190, guid: b67873768fb7ca042a54f53f59a014bf,
         type: 3}
       propertyPath: m_BehaviorType
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8732843575744590190, guid: b67873768fb7ca042a54f53f59a014bf,
         type: 3}
@@ -2086,7 +2086,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 546586818, guid: b67873768fb7ca042a54f53f59a014bf, type: 3}
       propertyPath: MaxStep
-      value: 5000
+      value: 500000
       objectReference: {fileID: 0}
     - target: {fileID: 546586818, guid: b67873768fb7ca042a54f53f59a014bf, type: 3}
       propertyPath: speed
@@ -2100,7 +2100,7 @@ PrefabInstance:
     - target: {fileID: 3076388863631003759, guid: b67873768fb7ca042a54f53f59a014bf,
         type: 3}
       propertyPath: MaxStep
-      value: 5000
+      value: 5000000
       objectReference: {fileID: 0}
     - target: {fileID: 3076388863631003759, guid: b67873768fb7ca042a54f53f59a014bf,
         type: 3}
@@ -2211,7 +2211,7 @@ PrefabInstance:
     - target: {fileID: 8732843575744590190, guid: b67873768fb7ca042a54f53f59a014bf,
         type: 3}
       propertyPath: m_BehaviorType
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8732843575744590190, guid: b67873768fb7ca042a54f53f59a014bf,
         type: 3}
@@ -2239,7 +2239,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 546586818, guid: b67873768fb7ca042a54f53f59a014bf, type: 3}
       propertyPath: MaxStep
-      value: 5000
+      value: 500000
       objectReference: {fileID: 0}
     - target: {fileID: 546586818, guid: b67873768fb7ca042a54f53f59a014bf, type: 3}
       propertyPath: speed
@@ -2253,7 +2253,7 @@ PrefabInstance:
     - target: {fileID: 3076388863631003759, guid: b67873768fb7ca042a54f53f59a014bf,
         type: 3}
       propertyPath: MaxStep
-      value: 5000
+      value: 5000000
       objectReference: {fileID: 0}
     - target: {fileID: 3076388863631003759, guid: b67873768fb7ca042a54f53f59a014bf,
         type: 3}
@@ -2364,7 +2364,7 @@ PrefabInstance:
     - target: {fileID: 8732843575744590190, guid: b67873768fb7ca042a54f53f59a014bf,
         type: 3}
       propertyPath: m_BehaviorType
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8732843575744590190, guid: b67873768fb7ca042a54f53f59a014bf,
         type: 3}

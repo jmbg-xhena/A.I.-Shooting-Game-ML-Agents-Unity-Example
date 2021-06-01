@@ -20,6 +20,7 @@ public class VsAgent : Agent
     public bool jumping = false;
     public Text recompensa_text;
     public Text score_text;
+    public Text recarga_text;
 
     public Transform shootingPoint;
     public int minStepsBetweenShots = 50;
@@ -115,6 +116,18 @@ public class VsAgent : Agent
         sensor.AddObservation(Vector3.Distance(this.transform.localPosition,oponent.transform.localPosition));
         //sensor.AddObservation(Vector3.Distance(this.transform.localPosition,this.mun.transform.localPosition));
         //sensor.AddObservation(Vector3.Distance(this.transform.localPosition, this.recargador.transform.localPosition));
+    }
+
+    private void Update()
+    {
+        if (empty_mun)
+        {
+            recarga_text.enabled = true;
+        }
+        else
+        {
+            recarga_text.enabled = false;
+        }
     }
 
     private void FixedUpdate()
