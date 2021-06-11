@@ -36,6 +36,8 @@ TagManager:
   - FxTemporaire
   - ps
   - pvs
+  - afuera
+  - obs
   layers:
   - Default
   - TransparentFX

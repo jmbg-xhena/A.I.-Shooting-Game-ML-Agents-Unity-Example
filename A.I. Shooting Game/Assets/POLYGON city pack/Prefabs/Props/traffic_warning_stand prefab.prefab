@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4739541837513720}
   m_Layer: 0
   m_Name: traffic_warning_stand prefab
-  m_TagString: wall
+  m_TagString: obs
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 64035056410642502}
   m_Layer: 0
   m_Name: traffic_warning_stand
-  m_TagString: Untagged
+  m_TagString: obs
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

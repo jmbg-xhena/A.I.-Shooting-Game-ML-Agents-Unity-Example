@@ -41,7 +41,7 @@ public class Recargador : MonoBehaviour
                 script.mun_count = script.original_mun_count;
                 script.empty_mun = false;
                 script.reloading = true;
-                script.AddReward(60f);
+                script.AddReward(100f);
                 mesh.enabled = false;
                 col.enabled = false;
                 print("recarga");
@@ -59,7 +59,7 @@ public class Recargador : MonoBehaviour
                 script.mun_count = script.original_mun_count;
                 script.empty_mun = false;
                 script.reloading = true;
-                script.AddReward(60f);
+                script.AddReward(100f);
                 mesh.enabled = false;
                 col.enabled = false;
                 print("recarga");

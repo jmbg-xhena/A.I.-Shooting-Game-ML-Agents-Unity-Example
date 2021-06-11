@@ -62,6 +62,8 @@ public class VsAgent : Agent
     public ParticleSystem dash;
     public ParticleSystem hit;
     public ParticleSystem expl;
+    public bool mirando;
+    Projectile spawnedProjectile;
 
     private void Shoot()
     {
@@ -71,7 +73,7 @@ public class VsAgent : Agent
         var layerMask = 1 << LayerMask.NameToLayer("Agent");
         var direction = transform.forward;
 
-        var spawnedProjectile = Instantiate(projectile,shootingPoint.position, Quaternion.Euler(0f, -90f, 0f));
+        spawnedProjectile = Instantiate(projectile,shootingPoint.position, Quaternion.Euler(0f, -90f, 0f));
         spawnedProjectile.SetDirection(direction);
 
         bullets_count--;
@@ -83,7 +85,7 @@ public class VsAgent : Agent
         {
             if (hit.transform.CompareTag("agent"))
             {
-                AddReward(100f*multip);
+                AddReward(10f*multip);
                 //score++;
                 //score_text.text = score.ToString();
                 //multip += 0.1f;
@@ -91,18 +93,19 @@ public class VsAgent : Agent
                 //hit.rigidbody.gameObject.GetComponent<ShootingAgent>().hit.gameObject.transform.position = hit.transform.position;
                 //hit.rigidbody.gameObject.GetComponent<ShootingAgent>().hit.Play();
                 //EndEpisode();
-                hit.transform.GetComponent<ShootingAgent>().SetReward(-10);
+                AddReward(10f);
+                hit.transform.GetComponent<ShootingAgent>().SetReward(-20);
             }
             else
             {
-                AddReward(-10f);
+                AddReward(-20f);
             }
         }
         if (bullets_count <= 0 && mun_count > 0)
         {
             mun_count--;
             reloading = true;
-            //AddReward(-0.01f);
+            //AddReward(-0.001f);
         }
     }
 
@@ -110,10 +113,18 @@ public class VsAgent : Agent
     {
         sensor.AddObservation(this.ShotAvaliable);
         sensor.AddObservation(this.transform.rotation.y);
+        sensor.AddObservation(oponent.transform.rotation.y);
         sensor.AddObservation(this.bullets_count);
         sensor.AddObservation(this.mun_count);
+        sensor.AddObservation(this.empty_mun);
+        sensor.AddObservation(this.mirando);
+        sensor.AddObservation(transform.localPosition); 
         sensor.AddObservation(oponent.transform.localPosition);
-        sensor.AddObservation(Vector3.Distance(this.transform.localPosition,oponent.transform.localPosition));
+        sensor.AddObservation(oponent.GetComponent<ShootingAgent>().mina.transform.localPosition);
+        /*if (oponent.GetComponent<ShootingAgent>().spawnedProjectile) {
+            sensor.AddObservation(oponent.GetComponent<ShootingAgent>().spawnedProjectile.transform.localPosition);
+        }*/
+        sensor.AddObservation(Vector3.Distance(this.transform.localPosition,oponent.transform.localPosition)); 
         //sensor.AddObservation(Vector3.Distance(this.transform.localPosition,this.mun.transform.localPosition));
         //sensor.AddObservation(Vector3.Distance(this.transform.localPosition, this.recargador.transform.localPosition));
     }
@@ -128,47 +139,65 @@ public class VsAgent : Agent
         {
             recarga_text.enabled = false;
         }
+
+        //print((int)Vector3.Distance(this.transform.position, this.oponent.transform.position));
+        if (transform.localPosition.y > 4) {
+            AddReward(0.1f);
+        }
+
+        if (Vector3.Distance(this.transform.localPosition, this.oponent.transform.localPosition) <= 14f && Vector3.Distance(this.transform.localPosition, this.oponent.transform.localPosition) > 6f)
+        {
+            AddReward(0.6f);
+            //print("muy cerca");
+        }
+
+        if (Vector3.Distance(this.transform.localPosition, this.oponent.transform.localPosition) < 6f)
+        {
+            AddReward(1.2f);
+            //print("cerca");
+        }
+
+        if (Vector3.Distance(this.transform.localPosition, this.oponent.transform.localPosition) > 14f)
+        {
+            AddReward(-1.2f); 
+            //print("lejos");
+        }
+        if (empty_mun)
+        {
+            recarga_text.enabled = true;
+        }
+        else
+        {
+            recarga_text.enabled = false;
+        }
     }
 
     private void FixedUpdate()
     {
         score_text.text = score.ToString();
         if (Rb.velocity.x >= 3 || Rb.velocity.x <= -3 || Rb.velocity.z >= 3 || Rb.velocity.z <=-3) {
-            AddReward(0.2f);
+            AddReward(0.02f);
         }
         else
         {
-            AddReward(-0.1f);
-        }
-         
-        if (Vector3.Distance(this.transform.localPosition, this.oponent.transform.localPosition) <= 9f && Vector3.Distance(this.transform.localPosition, this.oponent.transform.localPosition) > 4f)
-        { 
-            AddReward(0.2f);
-        }
-
-        if (Vector3.Distance(this.transform.localPosition, this.oponent.transform.localPosition) < 4f)
-        {
-            AddReward(0.3f);
-        }
-
-        if (Vector3.Distance(this.transform.localPosition, this.oponent.transform.localPosition) > 9f)
-        {
-            AddReward(-0.1f);
+            AddReward(-0.03f);
         }
 
 
         if (Physics.Raycast(shootingPoint.position, transform.forward, out var hit, 8f))
         {
-
             if (hit.transform.CompareTag("agent"))
             {
                 //Debug.DrawRay(shootingPoint.position, transform.forward * 5, Color.green,0.3f);
-                AddReward(80f / MaxStep);
-                rotationSpeed = 0;
-                jumpforce = 0;
-                if (ShotAvaliable && !reloading && !empty_mun)
-                    anim.SetTrigger("shoot");
-                Invoke("Shoot", 1f);
+                AddReward(8f / MaxStep);
+                mirando = true;
+                if (hit.transform.GetComponent<ShootingAgent>())
+                    hit.transform.GetComponent<ShootingAgent>().SetReward(4/MaxStep);
+                //rotationSpeed = 0;
+                //jumpforce = 0;
+                /*if (ShotAvaliable && !reloading && !empty_m un)
+                    anim.SetTrigger("shoot"); 
+                Invoke("Shoot", 1f);*/
             }
             else
             {
@@ -179,7 +208,10 @@ public class VsAgent : Agent
                     if (hit1.transform.CompareTag("agent"))
                     {
                         //Debug.DrawRay(shootingPoint.position, (transform.forward + (Vector3.left / 8)) * 5, Color.blue,0.3f);
-                        AddReward(20f / MaxStep);
+                        AddReward(2f / MaxStep);
+                        mirando = true;
+                        if (hit.transform.GetComponent<ShootingAgent>())
+                            hit.transform.GetComponent<ShootingAgent>().SetReward(1/MaxStep);
                     }
                     else
                     {
@@ -188,8 +220,14 @@ public class VsAgent : Agent
 
                             if (hit2.transform.CompareTag("agent"))
                             {
-                                //Debug.DrawRay(shootingPoint.position, (transform.forward + (Vector3.right / 8)) * 5, Color.red,0.3f);
-                                AddReward(20f / MaxStep);
+                                //Debug.DrawRay(shootingPo int.position, (transform.forward + (Vector3.right / 8)) * 5, Color.red,0.3f);
+                                AddReward(2f / MaxStep);
+                                mirando = true;
+                                if (hit.transform.GetComponent<ShootingAgent>())
+                                    hit.transform.GetComponent<ShootingAgent>().SetReward(1 / MaxStep);
+                            }
+                            else {
+                                mirando = false;
                             }
                         }
                     }
@@ -197,16 +235,16 @@ public class VsAgent : Agent
             }
         }
 
-        AddReward(-500f / MaxStep);
+        AddReward(-5f / MaxStep);
 
-        if (mun_count <= 0)
+        if (mun_count <= 0) 
         {
             if (reloading)
             {
                 reloading = false;
             }
             empty_mun = true;
-            //AddReward(-0.001f);
+            //AddReward(-0.0001f);
         }
 
         recompensa_text.text = GetCumulativeReward().ToString();
@@ -260,14 +298,15 @@ public class VsAgent : Agent
 
         if (transform.localPosition.y <= -10)
         {
-            AddReward(-200f);
+            AddReward(-500f);
+            score--;
             EndEpisode();
         }
-        if (transform.localPosition.y > 12)
+        if (transform.localPosition.y > 20)
         {
             print("muy alto");
-            AddReward(-50f);
-            oponent.GetComponent<ShootingAgent>().EndEpisode();
+            AddReward(-10f);
+            oponent.GetComponent<ShootingAgent>().EndEpisode(); 
             EndEpisode();
         }
 
@@ -292,14 +331,14 @@ public class VsAgent : Agent
     {
         if (Mathf.RoundToInt(vectorAction[4]) >= 1 && !jumping && jumps < 1)
         {
-            jump.transform.position = transform.position+Vector3.down*3;
+            jump.transform.position = transform.position+Vector3.down;
             jump.Play();
             //print("jump");
             jumps++;
             jumping = true;
             Rb.AddForce(new Vector3(0, jumpforce, 0), ForceMode.VelocityChange);
-            //AddReward(0.005f);
-            AddReward(-0.1f);
+            //AddReward(0.0005f);
+            AddReward(-2f); 
         }
 
         if (Mathf.RoundToInt(vectorAction[0]) >= 1)
@@ -325,10 +364,10 @@ public class VsAgent : Agent
         {
             dash.transform.position = transform.position;
             dash.Play();
-            Rb.velocity = new Vector3(vectorAction[2] * speed, 0, vectorAction[1] * speed)*100;
+            Rb.velocity = new Vector3(vectorAction[2] * speed, 0, vectorAction[1] * speed)*30;
             dashing = true;
             reloading_dash = true;
-             //AddReward(7.5f);
+             //AddReward(0.75f);
         }
         else {
             Rb.velocity = new Vector3(vectorAction[2] * speed, 0, vectorAction[1] * speed);
@@ -394,13 +433,12 @@ public class VsAgent : Agent
     {
         if (other.gameObject.CompareTag("agent"))
         {
-            AddReward(-50f);
+            AddReward(-5f);
             //EndEpisode();
         }
         if (other.gameObject.CompareTag("mun"))
         {
             print("municion");
-            //AddReward(100f);
             if (bullets_count <= 0)
             {
                 reloading = true;
@@ -413,6 +451,15 @@ public class VsAgent : Agent
         {
             Rb.AddForce(new Vector3(0, -9.8f, 0), ForceMode.VelocityChange);
         }
+        if (other.gameObject.CompareTag("obs"))
+        {
+            AddReward(-0.5f);
+        }
+
+        if (other.gameObject.CompareTag("pared") || other.gameObject.CompareTag("wall"))
+        {
+            AddReward(-1f);
+        }
     }
 
     private void OnCollisionStay(Collision collision)
@@ -422,9 +469,14 @@ public class VsAgent : Agent
         {
             jumps = 0;
         }
-        if (collision.gameObject.CompareTag("pared") || collision.gameObject.CompareTag("wall")) 
+        if (collision.gameObject.CompareTag("obs"))
         {
-            AddReward(-0.5f);
+            AddReward(-0.001f);
+        }
+
+        if (collision.gameObject.CompareTag("pared") || collision.gameObject.CompareTag("wall"))
+        {
+            AddReward(-1f);
         }
     }
 
@@ -433,17 +485,22 @@ public class VsAgent : Agent
         if (other.gameObject.CompareTag("vacio"))
         {
             print("vacio");
-            AddReward(-5f);
+            AddReward(-0.005f);
+            Rb.AddForce(Vector3.down*50); 
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
+        if (other.gameObject.CompareTag("vacio"))
+        {
+            AddReward(-1f);
+        }
         if (other.gameObject.CompareTag("mina azul"))
         {
-            AddReward(-50f);
+            AddReward(-200f);
             print("mina azul");
-            oponent.GetComponent<ShootingAgent>().AddReward(400);
+            oponent.GetComponent<ShootingAgent>().AddReward(30);
             oponent.GetComponent<ShootingAgent>().score++;
             expl.transform.position = transform.position;
             expl.Play();
@@ -452,13 +509,19 @@ public class VsAgent : Agent
         }
         if (other.gameObject.CompareTag("ps"))
         {
-            AddReward(-50f);
+            AddReward(-400f);
             print("dead hit");
-            oponent.GetComponent<ShootingAgent>().AddReward(400);
+            oponent.GetComponent<ShootingAgent>().AddReward(80);
             oponent.GetComponent<ShootingAgent>().score++;
             hit.transform.position = transform.position;
             hit.Play();
             oponent.GetComponent<ShootingAgent>().EndEpisode();
+            EndEpisode();
+        }
+        if (other.gameObject.CompareTag("afuera"))
+        {
+            AddReward(-1000f);
+            print("afuera");
             EndEpisode();
         }
     }

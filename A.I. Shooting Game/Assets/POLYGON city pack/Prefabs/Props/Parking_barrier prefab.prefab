@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4061960552898642}
   m_Layer: 0
   m_Name: Parking_barrier prefab
-  m_TagString: Untagged
+  m_TagString: obs
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -141,7 +141,7 @@ GameObject:
   - component: {fileID: 65388140836462866}
   m_Layer: 0
   m_Name: Parking_barrier
-  m_TagString: wall
+  m_TagString: obs
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
