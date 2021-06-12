@@ -141,9 +141,6 @@ public class VsAgent : Agent
         }
 
         //print((int)Vector3.Distance(this.transform.position, this.oponent.transform.position));
-        if (transform.localPosition.y > 4) {
-            AddReward(0.1f);
-        }
 
         if (Vector3.Distance(this.transform.localPosition, this.oponent.transform.localPosition) <= 14f && Vector3.Distance(this.transform.localPosition, this.oponent.transform.localPosition) > 6f)
         {

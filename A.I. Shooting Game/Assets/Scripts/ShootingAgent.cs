@@ -67,6 +67,7 @@ public class ShootingAgent : Agent
     private float rotation;
     public Projectile spawnedProjectile;
     public bool mirando;
+    public float init_height;
 
 
     private void Shoot()
@@ -138,9 +139,9 @@ public class ShootingAgent : Agent
     {
         //print((int)Vector3.Distance(this.transform.position, this.oponent.transform.position));
 
-        if (transform.localPosition.y > 4)
+        if (this.transform.localPosition.y > init_height - 1f && this.transform.localPosition.y < init_height + 1f)
         {
-            AddReward(0.1f);
+            AddReward(1f);
         }
         if (Vector3.Distance(this.transform.localPosition, this.oponent.transform.localPosition) <= 14f && Vector3.Distance(this.transform.localPosition, this.oponent.transform.localPosition) > 6f)
         {
@@ -168,7 +169,7 @@ public class ShootingAgent : Agent
             recarga_text.enabled = false;
         }
 
-        /*move.z = Input.GetAxis("Horizontal");
+        move.z = Input.GetAxis("Horizontal");
         move.x = -Input.GetAxis("Vertical");
         rotation = Input.GetAxis("Rotate");
         if (Input.GetKeyDown(KeyCode.Space))
@@ -211,7 +212,7 @@ public class ShootingAgent : Agent
             reloading_dash = true;
             //AddReward(0.1f);
         }
-        transform.Rotate(Vector3.up, rotation/5 * rotationSpeed);*/
+        transform.Rotate(Vector3.up, rotation/5 * rotationSpeed);
     }
 
     private void FixedUpdate()
@@ -376,7 +377,7 @@ public class ShootingAgent : Agent
     }
     public override void OnActionReceived(float[] vectorAction)
     {
-        if (Mathf.RoundToInt(vectorAction[4]) >= 1 && !jumping && jumps<1)
+       /* if (Mathf.RoundToInt(vectorAction[4]) >= 1 && !jumping && jumps<1)
         {
             jump.transform.position = transform.position+Vector3.down;
             jump.Play();
@@ -404,7 +405,7 @@ public class ShootingAgent : Agent
         {
             reloading = true;
         }*/
-        if (Mathf.RoundToInt(vectorAction[6]) >= 1 && !dashing)
+        /*if (Mathf.RoundToInt(vectorAction[6]) >= 1 && !dashing)
         {
             dash.transform.position = transform.position;
             dash.Play();
@@ -417,7 +418,7 @@ public class ShootingAgent : Agent
         {
             Rb.velocity = new Vector3(vectorAction[2] * speed, 0, vectorAction[1] * speed);
         }
-        transform.Rotate(Vector3.up, vectorAction[3] * rotationSpeed);
+        transform.Rotate(Vector3.up, vectorAction[3] * rotationSpeed);*/
     }
 
     public override void Initialize()
@@ -439,18 +440,19 @@ public class ShootingAgent : Agent
 
     public override void Heuristic(float[] actionsOut)
     {
-        actionsOut[0] = Input.GetMouseButtonDown(0) ? 1f : 0f;
+        /*actionsOut[0] = Input.GetMouseButtonDown(0) ? 1f : 0f;
         actionsOut[1] = Input.GetAxis("Horizontal");
         actionsOut[2] = -Input.GetAxis("Vertical");
         actionsOut[3] = Input.GetAxis("Rotate");
         actionsOut[4] = Input.GetKeyDown(KeyCode.Space) ? 1f : 0f;
         actionsOut[5] = Input.GetMouseButtonDown(1) ? 1f : 0f;
-        actionsOut[6] = Input.GetKeyDown(KeyCode.C) ? 1f : 0f;
+        actionsOut[6] = Input.GetKeyDown(KeyCode.C) ? 1f : 0f;*/
         //actionsOut[5] = Input.GetKeyDown(KeyCode.R) ? 1f : 0f;
     }
 
     public override void OnEpisodeBegin()
     {
+        init_height = 0;
         score_text.text = score.ToString();
         mina.transform.position = Vector3.up * 200;
         OnEnvironmentReset?.Invoke();
@@ -486,6 +488,11 @@ public class ShootingAgent : Agent
 
     private void OnCollisionEnter(Collision other)
     {
+        if (other.gameObject.CompareTag("ground")&& init_height == 0)
+        {
+            init_height = this.transform.localPosition.y;
+        }
+
         if (other.gameObject.CompareTag("enemy"))
         {
             //die();
@@ -528,7 +535,7 @@ public class ShootingAgent : Agent
         }
         if (collision.gameObject.CompareTag("pared") || collision.gameObject.CompareTag("wall")) 
         {
-            AddReward(-0.05f);
+            AddReward(-0.2f);
         }
     }
      
