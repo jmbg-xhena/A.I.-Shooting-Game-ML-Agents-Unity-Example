@@ -226,6 +226,7 @@ MonoBehaviour:
   jumping: 0
   recompensa_text: {fileID: 0}
   score_text: {fileID: 0}
+  recarga_text: {fileID: 0}
   shootingPoint: {fileID: 2125964478070919670}
   minStepsBetweenShots: 500
   damage: 100
@@ -258,6 +259,7 @@ MonoBehaviour:
   dash: {fileID: 0}
   hit: {fileID: 0}
   expl: {fileID: 0}
+  mirando: 0
 --- !u!136 &5911948344864429511
 CapsuleCollider:
   m_ObjectHideFlags: 0

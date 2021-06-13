@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5525886423894690680}
   - component: {fileID: 5525886423894690631}
   - component: {fileID: 5525886423894690682}
-  - component: {fileID: 7316214185426728623}
+  - component: {fileID: 8039233165398007336}
   m_Layer: 0
   m_Name: mina roja
   m_TagString: mina roja
@@ -98,8 +98,8 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 116
   m_CollisionDetection: 0
---- !u!135 &7316214185426728623
-SphereCollider:
+--- !u!136 &8039233165398007336
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -108,8 +108,9 @@ SphereCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  serializedVersion: 2
   m_Radius: 1.5
+  m_Height: 7
+  m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &1025446353473577766
 PrefabInstance:

@@ -174,7 +174,7 @@ public class ShootingAgent : Agent
         rotation = Input.GetAxis("Rotate");
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            jump.transform.position = transform.position + Vector3.down * 3;
+            jump.transform.position = transform.position + Vector3.down;
             jump.Play();
             //print("jump");
             jumps++;
